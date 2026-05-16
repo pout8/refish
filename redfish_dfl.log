@@ -1,0 +1,2335 @@
+==========================object===========================
+----------------- ArmHighOutletTemp             -----------
+ref count      : 1
+----------------- Fan6PresenceThermal           -----------
+ref count      : 1
+----------------- ComMemory370                  -----------
+ref count      : 1
+.Health         : listened by port : 13, 
+----------------- ssd_bit1_pred_mon-ca9         -----------
+ref count      : 1
+.MonSenValue    : listened by port : 13, 
+----------------- M2ZoneTempMinorInfo           -----------
+ref count      : 1
+----------------- CpuVCoreLowInfo               -----------
+ref count      : 1
+----------------- AcpiStatus                    -----------
+ref count      : 1
+.Health         : listened by port : 6, 13, 
+----------------- FabricLSWVcoreLowInfo         -----------
+ref count      : 1
+----------------- OMPort4-3                     -----------
+ref count      : 1
+----------------- SmtpItemCfg_0                 -----------
+ref count      : 1
+----------------- ComPowerSupply-10             -----------
+ref count      : 1
+.Health         : listened by port : 13, 
+----------------- Pspi1WtPumpIntPreFaultMinorInfo-----------
+ref count      : 1
+----------------- HAM1Connect-1                 -----------
+ref count      : 1
+.Present        : listened by port : 13, 
+----------------- LicenseFeatureEnableExpr      -----------
+ref count      : 1
+.Value          : listened by port : 13, 
+----------------- MainbrdPsAbnorInfo            -----------
+ref count      : 1
+----------------- SmtpItemCfg_1                 -----------
+ref count      : 1
+----------------- Power-d                       -----------
+ref count      : 1
+.Health         : listened by port : 6, 13, 
+----------------- Stateless:C                   -----------
+ref count      : 1
+----------------- Memory040                     -----------
+ref count      : 1
+.Presence       : listened by port : 13, 
+.FDMFault       : listened by port : 13, 
+.ReplaceFlag    : listened by port : 13, 
+----------------- Snmp                          -----------
+ref count      : 1
+.PortID         : listened by port : 17, 
+.PrivProtocol   : listened by port : 17, 
+.State          : listened by port : 29, 
+.AuthProtocol   : listened by port : 17, 
+.OldEngineID    : listened by port : 29, 
+.SnmpCommMasterKeyId : listened by port : 29, 
+----------------- DInletTemp-1                  -----------
+ref count      : 1
+.Health         : listened by port : 6, 13, 
+----------------- ExpanderVoltHighInfo          -----------
+ref count      : 1
+----------------- BmcEventSelClearedMntr        -----------
+ref count      : 1
+.State          : listened by port : 13, 
+----------------- iBMAUSBMassStorage            -----------
+ref count      : 1
+----------------- PCIeCardBatteryInfo           -----------
+ref count      : 1
+----------------- Sec1LSTempInfo                -----------
+ref count      : 1
+----------------- SmtpItemCfg_2                 -----------
+ref count      : 1
+----------------- Power-e                       -----------
+ref count      : 1
+.Health         : listened by port : 6, 13, 
+----------------- AEPMemoryMinorInfo            -----------
+ref count      : 1
+----------------- NandFlash:C                   -----------
+ref count      : 1
+----------------- Port4LinkDownMntr-3           -----------
+ref count      : 1
+.State          : listened by port : 13, 
+----------------- PICCardFaultInfo              -----------
+ref count      : 1
+----------------- RaidPHY5-ee01                 -----------
+ref count      : 1
+----------------- SDCardInstalledInfo           -----------
+ref count      : 1
+----------------- SmtpItemCfg_3                 -----------
+ref count      : 1
+----------------- Power-f                       -----------
+ref count      : 1
+.Health         : listened by port : 6, 13, 
+----------------- PsElabel-10                   -----------
+ref count      : 1
+.MfgDateTime    : listened by port : 19, 
+.SysSerialNum   : listened by port : 2, 
+.ProductAssetTag : listened by port : 13, 
+.BoardSerialNumber : listened by port : 13, 25, 
+.ChassisSerialNumber : listened by port : 13, 
+.ProductSerialNumber : listened by port : 25, 
+----------------- BBURemovedInfo                -----------
+ref count      : 1
+----------------- NPU_MAXSFPTemp-121            -----------
+ref count      : 1
+.Health         : listened by port : 6, 13, 
+----------------- Mem370PFAEMntr                -----------
+ref count      : 1
+.State          : listened by port : 13, 
+----------------- ComSSDConnect2-c              -----------
+ref count      : 1
+.Present        : listened by port : 13, 
+----------------- Fan5FStatus                   -----------
+ref count      : 1
+.Health         : listened by port : 6, 13, 
+----------------- FabricSwitchSVIDFailedInfo    -----------
+ref count      : 1
+----------------- 12VVddqLowFailInfo            -----------
+ref count      : 1
+----------------- NPU_MAXSFPTemp-122            -----------
+ref count      : 1
+.Health         : listened by port : 6, 13, 
+----------------- Hdd0-c01                      -----------
+ref count      : 1
+.RebuildState   : listened by port : 13, 
+.Id             : listened by port : 23, 11, 
+.ReplaceFlag    : listened by port : 13, 
+----------------- BBUCellOverTemMinInfo         -----------
+ref count      : 1
+----------------- RaidInitErrInfo               -----------
+ref count      : 1
+----------------- LcdFailureInfo                -----------
+ref count      : 1
+----------------- port2_link_status_mon-3       -----------
+ref count      : 1
+.MonSenValue    : listened by port : 13, 
+----------------- NICTemp-3                     -----------
+ref count      : 1
+.Health         : listened by port : 6, 13, 
+----------------- NPU_MAXSFPTemp-123            -----------
+ref count      : 1
+.Health         : listened by port : 6, 13, 
+----------------- Disk3-c                       -----------
+ref count      : 1
+.Health         : listened by port : 6, 13, 
+----------------- PCIeDiskMinorFaultInfo        -----------
+ref count      : 1
+----------------- MemNVDIMMCapAbsentInfo        -----------
+ref count      : 1
+----------------- RedfishEventService           -----------
+ref count      : 1
+.EventLastAlertID : send event count: 2508
+.EventResourceID : send event count: 32250
+----------------- MezzOpaSvidFaild              -----------
+ref count      : 1
+----------------- CoolingVirtual                -----------
+ref count      : 1
+----------------- SysRestartTurnOnPolicyInfo    -----------
+ref count      : 1
+----------------- KRBServer                     -----------
+ref count      : 1
+.BindDNPswMasterKeyId : listened by port : 29, 
+----------------- BasePlanePowerOffInfo         -----------
+ref count      : 1
+----------------- NPU_MAXSFPTemp-124            -----------
+ref count      : 1
+.Health         : listened by port : 6, 13, 
+----------------- LicenseManage:C               -----------
+ref count      : 1
+----------------- Memory150                     -----------
+ref count      : 1
+.Presence       : listened by port : 13, 
+.FDMFault       : listened by port : 13, 
+.ReplaceFlag    : listened by port : 13, 
+----------------- WatDetCabAbsentInfo           -----------
+ref count      : 1
+----------------- NICVoltHighInfo               -----------
+ref count      : 1
+----------------- HostPowerOnInfo               -----------
+ref count      : 1
+----------------- PMemTempMinorInfo             -----------
+ref count      : 1
+----------------- SwitchBrdPSUInfo              -----------
+ref count      : 1
+----------------- CXPCableInfo                  -----------
+ref count      : 1
+----------------- MezzSys12VFailInfo            -----------
+ref count      : 1
+----------------- Mem1EnergyThermalPolicy       -----------
+ref count      : 1
+----------------- InletTempUpperMinorMntr       -----------
+ref count      : 1
+.State          : listened by port : 13, 
+----------------- LDAP                          -----------
+ref count      : 1
+.BindDNPswMasterKeyId : listened by port : 29, 
+----------------- NVME3_Slot9                   -----------
+ref count      : 1
+----------------- InterCpldLinkDownInfo         -----------
+ref count      : 1
+----------------- CpuCoreTempCtlInfo            -----------
+ref count      : 1
+----------------- PCIeAddrInfoVirtual           -----------
+ref count      : 1
+----------------- ComVPDConnect4-c              -----------
+ref count      : 1
+.Present        : listened by port : 13, 
+----------------- Sys1_1VHighInfo               -----------
+ref count      : 1
+----------------- CpuDdrvddLowInfo              -----------
+ref count      : 1
+----------------- BIO3V3LowInfo                 -----------
+ref count      : 1
+----------------- port4_link_status_mon-3       -----------
+ref count      : 1
+.MonSenValue    : listened by port : 13, 
+----------------- CpuVccioLowInfo               -----------
+ref count      : 1
+----------------- SoCBoardTempReadFailInfo      -----------
+ref count      : 1
+----------------- NC12VLowInfo                  -----------
+ref count      : 1
+----------------- Memory260                     -----------
+ref count      : 1
+.Presence       : listened by port : 13, 
+.FDMFault       : listened by port : 13, 
+.ReplaceFlag    : listened by port : 13, 
+----------------- PcieAddrNPU-10a               -----------
+ref count      : 1
+----------------- MemCfgErrorInfo               -----------
+ref count      : 1
+----------------- ModbusCommInitInfo            -----------
+ref count      : 1
+----------------- LDAPCert6_1                   -----------
+ref count      : 1
+----------------- PCIeLinkDownInfo              -----------
+ref count      : 1
+----------------- SoCBoardCriticalInfo          -----------
+ref count      : 1
+----------------- HDD_RWM_exp-ca9               -----------
+ref count      : 1
+.Value          : listened by port : 13, 
+----------------- SysRestartPreStatePolicyInfo  -----------
+ref count      : 1
+----------------- CpuVDDQ_ABGetFailedInfo       -----------
+ref count      : 1
+----------------- PcieAddrNPU-10b               -----------
+ref count      : 1
+----------------- CAServerClientCert            -----------
+ref count      : 1
+----------------- RedfishWorkKey                -----------
+ref count      : 1
+.WorkKey        : recv event count: 1 : listened by port : 29, 13, 1, 14, 10, 
+----------------- DEnergyPolicyOutlet-1         -----------
+ref count      : 1
+----------------- Sys2_5VHighInfo               -----------
+ref count      : 1
+----------------- Port1LinkDownMajor-121        -----------
+ref count      : 1
+.State          : listened by port : 13, 
+----------------- LDAPCert6_2                   -----------
+ref count      : 1
+----------------- sms0                          -----------
+ref count      : 1
+.MinPort        : listened by port : 13, 
+.BoBChannelType : listened by port : 27, 17, 15, 
+.MaxPort        : listened by port : 13, 
+.ReadyBoBChannel : listened by port : 10, 
+.IPAddr         : listened by port : 13, 1, 
+.UpdateStatus   : listened by port : 12, 
+.CdevChannelEnabled : listened by port : 27, 
+.RegisterState  : listened by port : 1, 
+.Port           : listened by port : 27, 1, 
+----------------- RFBANoPresInfo                -----------
+ref count      : 1
+----------------- ComHdd9-c                     -----------
+ref count      : 1
+.Health         : listened by port : 13, 
+----------------- CpuDDRVPP_ABGetFailedInfo     -----------
+ref count      : 1
+----------------- PcieAddrNPU-10c               -----------
+ref count      : 1
+----------------- USBIoutOcFaultInfo            -----------
+ref count      : 1
+----------------- ComMemory050                  -----------
+ref count      : 1
+.Health         : listened by port : 13, 
+----------------- ComHddConnect7-c              -----------
+ref count      : 1
+.Present        : listened by port : 13, 
+----------------- LDAPCert6_3                   -----------
+ref count      : 1
+----------------- PryLSLRDisConnInfo            -----------
+ref count      : 1
+----------------- PcieSEC1                      -----------
+ref count      : 1
+----------------- RaidPHY4-ee01                 -----------
+ref count      : 1
+----------------- PcbVersion-105                -----------
+ref count      : 1
+----------------- SSDTempReadFailInfo           -----------
+ref count      : 1
+----------------- PcbVersion-106                -----------
+ref count      : 1
+----------------- Port1LinkDownMajor-123        -----------
+ref count      : 1
+.State          : listened by port : 13, 
+----------------- LDAPCert6_4                   -----------
+ref count      : 1
+----------------- IOSlotUnavailableInfo         -----------
+ref count      : 1
+----------------- PcieSEC2                      -----------
+ref count      : 1
+----------------- RiserTemp-ee                  -----------
+ref count      : 1
+.Health         : listened by port : 6, 13, 
+----------------- NC12VFailInfo                 -----------
+ref count      : 1
+----------------- MemBrdTempInfo                -----------
+ref count      : 1
+----------------- OutletTempMajorInfo           -----------
+ref count      : 1
+----------------- PcbVersion-107                -----------
+ref count      : 1
+----------------- CpuCoreTempMajorInfo          -----------
+ref count      : 1
+----------------- LDAPCert6_5                   -----------
+ref count      : 1
+----------------- ssd_bit3_fault_mon-ca9        -----------
+ref count      : 1
+.MonSenValue    : listened by port : 13, 
+----------------- LicenseSaleInfo:C             -----------
+ref count      : 1
+----------------- PcieSEC3                      -----------
+ref count      : 1
+----------------- Port1LinkDownMajor-124        -----------
+ref count      : 1
+.State          : listened by port : 13, 
+----------------- MainboardOverTempInfo         -----------
+ref count      : 1
+----------------- PcbVersion-108                -----------
+ref count      : 1
+----------------- OMEnergySavePolicy-121        -----------
+ref count      : 1
+----------------- LDAPCert6_6                   -----------
+ref count      : 1
+----------------- PcieSEC4                      -----------
+ref count      : 1
+----------------- NPUHBMPolicy-10a              -----------
+ref count      : 1
+----------------- Memory370                     -----------
+ref count      : 1
+.Presence       : listened by port : 13, 
+.FDMFault       : listened by port : 13, 
+.ReplaceFlag    : listened by port : 13, 
+----------------- HDDBkpVolLowMajorInfo         -----------
+ref count      : 1
+----------------- SysPower:C                    -----------
+ref count      : 1
+----------------- PcbVersion-109                -----------
+ref count      : 1
+----------------- ssd_pre_failure_exp-caa       -----------
+ref count      : 1
+.Value          : listened by port : 13, 
+----------------- LDAPCert6_7                   -----------
+ref count      : 1
+----------------- OMEnergySavePolicy-122        -----------
+ref count      : 1
+----------------- NPUHBMPolicy-10b              -----------
+ref count      : 1
+----------------- EiuaVoltHighInfo              -----------
+ref count      : 1
+----------------- SasCableSetAbsentInfo         -----------
+ref count      : 1
+----------------- OMEnergySavePolicy-123        -----------
+ref count      : 1
+----------------- ComPcieCard-caa               -----------
+ref count      : 1
+.Health         : listened by port : 13, 
+----------------- LDAPCert6_8                   -----------
+ref count      : 1
+----------------- CpuVRDTempMajorInfo           -----------
+ref count      : 1
+----------------- NPUHBMPolicy-10c              -----------
+ref count      : 1
+----------------- HeartbeatEthFautyMajorInfo    -----------
+ref count      : 1
+----------------- Stdby1_0V_LswCoreLowInfo      -----------
+ref count      : 1
+----------------- Mem1HighThermalPolicy         -----------
+ref count      : 1
+----------------- ComMemory160                  -----------
+ref count      : 1
+.Health         : listened by port : 13, 
+----------------- SyslogConfig:C                -----------
+ref count      : 1
+----------------- DevOfflineInfo                -----------
+ref count      : 1
+----------------- OMEnergySavePolicy-124        -----------
+ref count      : 1
+----------------- LDAPCert6_9                   -----------
+ref count      : 1
+----------------- BbuCapacityLowInfo            -----------
+ref count      : 1
+----------------- SecLRHighTempInfo             -----------
+ref count      : 1
+----------------- Cpu4VddqTemp                  -----------
+ref count      : 1
+.Health         : listened by port : 6, 13, 
+----------------- PriSideProptValMajorInfo      -----------
+ref count      : 1
+----------------- LDAPCommon:C                  -----------
+ref count      : 1
+----------------- CpuVmcpHighInfo               -----------
+ref count      : 1
+----------------- RiserCardAnchor-9             -----------
+ref count      : 1
+----------------- lom2_port0_link_mon-121       -----------
+ref count      : 1
+.MonSenValue    : listened by port : 13, 
+----------------- SMMTempGetFailInfo            -----------
+ref count      : 1
+----------------- Mem340RemovedMntr             -----------
+ref count      : 1
+.State          : listened by port : 13, 
+----------------- Warning                       -----------
+ref count      : 1
+.HealthStatus   : listened by port : 13, 
+----------------- BBUProtectInfo                -----------
+ref count      : 1
+----------------- Bus_Exp_3f                    -----------
+ref count      : 1
+.Value          : listened by port : 13, 
+----------------- Dimm070                       -----------
+ref count      : 1
+.Health         : listened by port : 6, 13, 
+----------------- lom2_port0_link_mon-122       -----------
+ref count      : 1
+.MonSenValue    : listened by port : 13, 
+----------------- SysInitErrorInfo              -----------
+ref count      : 1
+----------------- ssd_bit6_fault_mon-ca9        -----------
+ref count      : 1
+.MonSenValue    : listened by port : 13, 
+----------------- BmcEventSelFullInfo           -----------
+ref count      : 1
+----------------- CpuVCoreHighInfo              -----------
+ref count      : 1
+----------------- MCUFirmwareName-105           -----------
+ref count      : 1
+----------------- HddRemovedInfo                -----------
+ref count      : 1
+----------------- lom2_port0_link_mon-123       -----------
+ref count      : 1
+.MonSenValue    : listened by port : 13, 
+----------------- SysTotalPowerFailInfo         -----------
+ref count      : 1
+----------------- MngmntHealth                  -----------
+ref count      : 1
+.Health         : listened by port : 6, 13, 
+----------------- RS485Out12VLowInfo            -----------
+ref count      : 1
+----------------- EPMClockFailInfo              -----------
+ref count      : 1
+----------------- LeakCardAbsAlmInfo            -----------
+ref count      : 1
+----------------- HAMFw8Connect-1               -----------
+ref count      : 1
+.Present        : listened by port : 13, 
+----------------- ComPS1                        -----------
+ref count      : 1
+.Health         : listened by port : 13, 
+----------------- HddBackCardAnchor-c           -----------
+ref count      : 1
+----------------- PCIeDisklostInfo              -----------
+ref count      : 1
+----------------- lom2_port0_link_mon-124       -----------
+ref count      : 1
+.MonSenValue    : listened by port : 13, 
+----------------- Fan6RStatus                   -----------
+ref count      : 1
+.Health         : listened by port : 6, 13, 
+----------------- MCUFirmwareName-106           -----------
+ref count      : 1
+----------------- NodeBMCHeartBeatInfo          -----------
+ref count      : 1
+----------------- SecureBootFailedInfo          -----------
+ref count      : 1
+----------------- CpuDTSGetFailInfo             -----------
+ref count      : 1
+----------------- MCUFirmwareName-107           -----------
+ref count      : 1
+----------------- SecurityEnhance               -----------
+ref count      : 1
+.SSHCiphers     : listened by port : 29, 
+.IpmiMasterKeyId : listened by port : 29, 
+.SSHMACsStatus  : listened by port : 13, 
+.SystemLockDownStatus : listened by port : 15, 1, 
+.CertOverdueWarnTime : listened by port : 19, 
+.MKUpdateInterval : listened by port : 29, 
+.SSHCiphersStatus : listened by port : 13, 
+.BannerState    : listened by port : 29, 
+.RMCPCipherSuites : listened by port : 15, 
+.SSHHostKeys    : listened by port : 29, 
+.SSLCipherSuitesStatus : listened by port : 13, 
+.TLSVersion     : listened by port : 14, 10, 
+.AntiDNSRebindStatus : listened by port : 10, 
+.SSHKexs        : listened by port : 29, 
+.SnmpPrivacyPwdMasterKeyId : listened by port : 29, 
+.SSHHostKeysStatus : listened by port : 13, 
+.RMCPCipherSuitesStatus : listened by port : 13, 
+.SSHKexsStatus  : listened by port : 13, 
+.SSHMACs        : listened by port : 29, 
+.SSLCipherSuites : listened by port : 29, 10, 
+.SSHPasswordAuthentication : listened by port : 29, 
+----------------- OcpCardFaultInfo              -----------
+ref count      : 1
+----------------- Fan3FStatusThermal            -----------
+ref count      : 1
+----------------- ComMemory270                  -----------
+ref count      : 1
+.Health         : listened by port : 13, 
+----------------- MCUFirmwareName-108           -----------
+ref count      : 1
+----------------- UserRoleCust1                 -----------
+ref count      : 1
+.VMMMgnt        : listened by port : 29, 
+.KVMMgnt        : listened by port : 29, 
+----------------- PSInputLostMajorInfo          -----------
+ref count      : 1
+----------------- EthGroup0                     -----------
+ref count      : 1
+.IpMode         : listened by port : 29, 19, 
+.VlanState      : listened by port : 17, 
+.SLAACIpv6Addr  : listened by port : 17, 10, 
+.Ipv6Addr       : listened by port : 29, 17, 10, 
+.SubnetMask     : listened by port : 29, 
+.Ipv6Mode       : listened by port : 29, 19, 
+.Type           : listened by port : 17, 10, 
+.ActivePort     : listened by port : 17, 10, 
+.IpVersion      : listened by port : 29, 10, 
+.NetMode        : listened by port : 17, 
+.Ipv6LocalLink  : listened by port : 17, 10, 
+.VlanID         : listened by port : 17, 
+.Ipv6DefaultGateway : listened by port : 29, 
+.Ipv6Prefix     : listened by port : 29, 
+.DefaultGateway : listened by port : 29, 
+.IpAddr         : listened by port : 29, 17, 15, 4, 10, 
+----------------- ExpVoltLowInfo                -----------
+ref count      : 1
+----------------- PCIeVoltLowMaintInfo          -----------
+ref count      : 1
+----------------- OMPort3-3                     -----------
+ref count      : 1
+----------------- Device_Exp_3f                 -----------
+ref count      : 1
+.Value          : listened by port : 13, 
+----------------- MCUFirmwareName-109           -----------
+ref count      : 1
+----------------- UserRoleCust2                 -----------
+ref count      : 1
+.VMMMgnt        : listened by port : 29, 
+.KVMMgnt        : listened by port : 29, 
+----------------- RaidPHY3-ee01                 -----------
+ref count      : 1
+----------------- dump_0                        -----------
+ref count      : 1
+----------------- Stby1VFailInfo                -----------
+ref count      : 1
+----------------- CAServerCACert                -----------
+ref count      : 1
+----------------- IOBoardSolderErrInfo          -----------
+ref count      : 1
+----------------- UserRoleCust3                 -----------
+ref count      : 1
+.VMMMgnt        : listened by port : 29, 
+.KVMMgnt        : listened by port : 29, 
+----------------- Mem350RemovedMntr             -----------
+ref count      : 1
+.State          : listened by port : 13, 
+----------------- LOM1Connector-1               -----------
+ref count      : 1
+.Present        : listened by port : 13, 
+----------------- EthGroup2                     -----------
+ref count      : 1
+.IpMode         : listened by port : 29, 19, 
+.VlanState      : listened by port : 17, 
+.SLAACIpv6Addr  : listened by port : 17, 10, 
+.Ipv6Addr       : listened by port : 29, 17, 10, 
+.SubnetMask     : listened by port : 29, 
+.Ipv6Mode       : listened by port : 29, 19, 
+.Type           : listened by port : 17, 10, 
+.ActivePort     : listened by port : 17, 10, 
+.IpVersion      : listened by port : 29, 10, 
+.NetMode        : listened by port : 17, 
+.Ipv6LocalLink  : listened by port : 17, 10, 
+.VlanID         : listened by port : 17, 
+.Ipv6DefaultGateway : listened by port : 29, 
+.Ipv6Prefix     : listened by port : 29, 
+.DefaultGateway : listened by port : 29, 
+.IpAddr         : listened by port : 29, 17, 15, 4, 10, 
+----------------- PsInletPolicy-10              -----------
+ref count      : 1
+----------------- NPUVRDChipTemp-10a            -----------
+ref count      : 1
+.Health         : listened by port : 6, 13, 
+----------------- Sys1_5VGetFailInfo            -----------
+ref count      : 1
+----------------- UserRoleCust4                 -----------
+ref count      : 1
+.VMMMgnt        : listened by port : 29, 
+.KVMMgnt        : listened by port : 29, 
+----------------- SysVoltageLowInfo             -----------
+ref count      : 1
+----------------- NpuBoardUceInfo               -----------
+ref count      : 1
+----------------- EthGroup3                     -----------
+ref count      : 1
+.IpMode         : listened by port : 29, 19, 
+.VlanState      : listened by port : 17, 
+.SLAACIpv6Addr  : listened by port : 17, 10, 
+.Ipv6Addr       : listened by port : 29, 17, 10, 
+.SubnetMask     : listened by port : 29, 
+.Ipv6Mode       : listened by port : 29, 19, 
+.Type           : listened by port : 17, 10, 
+.ActivePort     : listened by port : 17, 10, 
+.IpVersion      : listened by port : 29, 10, 
+.NetMode        : listened by port : 17, 
+.Ipv6LocalLink  : listened by port : 17, 10, 
+.VlanID         : listened by port : 17, 
+.Ipv6DefaultGateway : listened by port : 29, 
+.Ipv6Prefix     : listened by port : 29, 
+.DefaultGateway : listened by port : 29, 
+.IpAddr         : listened by port : 29, 17, 15, 4, 10, 
+----------------- BmcEepCheckFailInfo           -----------
+ref count      : 1
+----------------- NPUVRDChipTemp-10b            -----------
+ref count      : 1
+.Health         : listened by port : 6, 13, 
+----------------- Sys1_5VLowInfo                -----------
+ref count      : 1
+----------------- MainboardVoltageFailInfo      -----------
+ref count      : 1
+----------------- CpuReplaceInfo                -----------
+ref count      : 1
+----------------- VinUvWarningInfo              -----------
+ref count      : 1
+----------------- Fan6FPresence                 -----------
+ref count      : 1
+.Health         : listened by port : 6, 13, 
+----------------- Memory370ReplaceMntr          -----------
+ref count      : 1
+.State          : listened by port : 13, 
+----------------- BoardsAsynFailedInfo          -----------
+ref count      : 1
+----------------- ComSSDConnect1-c              -----------
+ref count      : 1
+.Present        : listened by port : 13, 
+----------------- NPUVRDChipTemp-10c            -----------
+ref count      : 1
+.Health         : listened by port : 6, 13, 
+----------------- Cpu3VrdTempThermal            -----------
+ref count      : 1
+----------------- SwitchBrdVoltFailInfo         -----------
+ref count      : 1
+----------------- Fan4FStatus                   -----------
+ref count      : 1
+.Health         : listened by port : 6, 13, 
+----------------- Cpu2MemTemp                   -----------
+ref count      : 1
+.Health         : listened by port : 6, 13, 
+----------------- UserRole:C                    -----------
+ref count      : 1
+----------------- ExpMosTempHighMjoInfo         -----------
+ref count      : 1
+----------------- MemUsageInfo                  -----------
+ref count      : 1
+----------------- N_VDDAVS_CPU0                 -----------
+ref count      : 1
+.Health         : listened by port : 6, 13, 
+----------------- MeInfo                        -----------
+ref count      : 1
+.CpuTjmax       : listened by port : 6, 
+----------------- Fan6FStatusThermal            -----------
+ref count      : 1
+----------------- Fru0Elabel-121                -----------
+ref count      : 1
+.MfgDateTime    : listened by port : 19, 
+.SysSerialNum   : listened by port : 2, 
+.ProductAssetTag : listened by port : 13, 
+.BoardSerialNumber : listened by port : 13, 25, 
+.ChassisSerialNumber : listened by port : 13, 
+.ProductSerialNumber : listened by port : 25, 
+----------------- Disk2-c                       -----------
+ref count      : 1
+.Health         : listened by port : 6, 13, 
+----------------- LeakCardPresentInfo           -----------
+ref count      : 1
+----------------- DiskRAIDPHYInfo               -----------
+ref count      : 1
+----------------- SDCardFaultInfo               -----------
+ref count      : 1
+----------------- N_VDDAVS_CPU1                 -----------
+ref count      : 1
+.Health         : listened by port : 6, 13, 
+----------------- NPUNimTemp-10a                -----------
+ref count      : 1
+.Health         : listened by port : 6, 13, 
+----------------- HAM8Connect-1                 -----------
+ref count      : 1
+.Present        : listened by port : 13, 
+----------------- Fru0Elabel-122                -----------
+ref count      : 1
+.MfgDateTime    : listened by port : 19, 
+.SysSerialNum   : listened by port : 2, 
+.ProductAssetTag : listened by port : 13, 
+.BoardSerialNumber : listened by port : 13, 25, 
+.ChassisSerialNumber : listened by port : 13, 
+.ProductSerialNumber : listened by port : 25, 
+----------------- NVMeVPD-ca9                   -----------
+ref count      : 1
+----------------- LDAPCert2_10                  -----------
+ref count      : 1
+----------------- PCIeNetCardMinorFaultInfo     -----------
+ref count      : 1
+----------------- OMSignalAlarmInfo             -----------
+ref count      : 1
+----------------- MemInitErrorLogInfo           -----------
+ref count      : 1
+----------------- Memory050                     -----------
+ref count      : 1
+.Presence       : listened by port : 13, 
+.FDMFault       : listened by port : 13, 
+.ReplaceFlag    : listened by port : 13, 
+----------------- MutualAuthenticationRootCert1 -----------
+ref count      : 1
+.CRLFilePath    : listened by port : 10, 
+.hashId         : listened by port : 10, 
+.hashValue      : listened by port : 10, 
+----------------- NPUNimTemp-10b                -----------
+ref count      : 1
+.Health         : listened by port : 6, 13, 
+----------------- N_VDDAVS_CPU2                 -----------
+ref count      : 1
+.Health         : listened by port : 6, 13, 
+----------------- Fru0Elabel-123                -----------
+ref count      : 1
+.MfgDateTime    : listened by port : 19, 
+.SysSerialNum   : listened by port : 2, 
+.ProductAssetTag : listened by port : 13, 
+.BoardSerialNumber : listened by port : 13, 25, 
+.ChassisSerialNumber : listened by port : 13, 
+.ProductSerialNumber : listened by port : 25, 
+----------------- ACPIPowerOffMntr              -----------
+ref count      : 1
+.State          : listened by port : 13, 
+----------------- FanType8080+                  -----------
+ref count      : 1
+----------------- CpuThermTripInfo              -----------
+ref count      : 1
+----------------- MutualAuthenticationRootCert2 -----------
+ref count      : 1
+.CRLFilePath    : listened by port : 10, 
+.hashId         : listened by port : 10, 
+.hashValue      : listened by port : 10, 
+----------------- PortConfig:C                  -----------
+ref count      : 1
+----------------- N_VDDAVS_CPU3                 -----------
+ref count      : 1
+.Health         : listened by port : 6, 13, 
+----------------- Fru0Elabel-124                -----------
+ref count      : 1
+.MfgDateTime    : listened by port : 19, 
+.SysSerialNum   : listened by port : 2, 
+.ProductAssetTag : listened by port : 13, 
+.BoardSerialNumber : listened by port : 13, 25, 
+.ChassisSerialNumber : listened by port : 13, 
+.ProductSerialNumber : listened by port : 25, 
+----------------- PsFanStatus-10                -----------
+ref count      : 1
+.Health         : listened by port : 6, 13, 
+----------------- PCIeGetPowerFailInfo          -----------
+ref count      : 1
+----------------- NPUNimTemp-10c                -----------
+ref count      : 1
+.Health         : listened by port : 6, 13, 
+----------------- RiserCardPwrInfo              -----------
+ref count      : 1
+----------------- Cpu1                          -----------
+ref count      : 1
+.Error2         : listened by port : 23, 
+.Version        : listened by port : 6, 
+.IErr           : listened by port : 14, 23, 
+.FDMFault       : listened by port : 13, 
+.McErr          : listened by port : 14, 23, 
+.ThermTrip      : listened by port : 13, 
+.MirrorFailChMask : listened by port : 23, 
+----------------- BCU-10a                       -----------
+ref count      : 1
+.VRDStatus      : listened by port : 2, 
+----------------- MutualAuthenticationRootCert3 -----------
+ref count      : 1
+.CRLFilePath    : listened by port : 10, 
+.hashId         : listened by port : 10, 
+.hashValue      : listened by port : 10, 
+----------------- hdd_temperature_exp-ca9       -----------
+ref count      : 1
+.Value          : send event count: 2884 : listened by port : 13, 
+----------------- ProxyKvm0                     -----------
+ref count      : 1
+.LocalKVMState  : listened by port : 14, 
+.Port           : listened by port : 14, 
+.KvmTimeout     : listened by port : 14, 
+.State          : listened by port : 14, 
+.ScreenSwitch   : listened by port : 14, 
+----------------- SSH                           -----------
+ref count      : 1
+.State          : listened by port : 29, 27, 17, 10, 
+.Port           : listened by port : 29, 27, 17, 10, 
+----------------- PHYFaultInfo                  -----------
+ref count      : 1
+----------------- Cpu2                          -----------
+ref count      : 1
+.Error2         : listened by port : 23, 
+.Version        : listened by port : 6, 
+.IErr           : listened by port : 14, 23, 
+.FDMFault       : listened by port : 13, 
+.McErr          : listened by port : 14, 23, 
+.ThermTrip      : listened by port : 13, 
+.MirrorFailChMask : listened by port : 23, 
+----------------- BCU-10b                       -----------
+ref count      : 1
+.VRDStatus      : listened by port : 2, 
+----------------- MutualAuthenticationRootCert4 -----------
+ref count      : 1
+.CRLFilePath    : listened by port : 10, 
+.hashId         : listened by port : 10, 
+.hashValue      : listened by port : 10, 
+----------------- DNSSetting:C                  -----------
+ref count      : 1
+----------------- WEBHTTP                       -----------
+ref count      : 1
+.State          : listened by port : 29, 27, 17, 10, 
+.Port           : listened by port : 29, 27, 17, 10, 
+----------------- Stdby3_3VLowInfo              -----------
+ref count      : 1
+----------------- RiserCardFru-ee               -----------
+ref count      : 1
+----------------- FanbdCpldSelfcheckInfo        -----------
+ref count      : 1
+----------------- HiAMAbsentInfo                -----------
+ref count      : 1
+----------------- ComVPDConnect3-c              -----------
+ref count      : 1
+.Present        : listened by port : 13, 
+----------------- Cpu3                          -----------
+ref count      : 1
+.Error2         : listened by port : 23, 
+.Version        : listened by port : 6, 
+.IErr           : listened by port : 14, 23, 
+.FDMFault       : listened by port : 13, 
+.McErr          : listened by port : 14, 23, 
+.ThermTrip      : listened by port : 13, 
+.MirrorFailChMask : listened by port : 23, 
+----------------- BCU-10c                       -----------
+ref count      : 1
+.VRDStatus      : listened by port : 2, 
+----------------- MutualAuthenticationRootCert5 -----------
+ref count      : 1
+.CRLFilePath    : listened by port : 10, 
+.hashId         : listened by port : 10, 
+.hashValue      : listened by port : 10, 
+----------------- CPLDVer-1                     -----------
+ref count      : 1
+----------------- IOBoardCatErrInfo             -----------
+ref count      : 1
+----------------- 1822Chip0V8HighInfo           -----------
+ref count      : 1
+----------------- CertOverDue                   -----------
+ref count      : 1
+.Health         : listened by port : 6, 13, 
+----------------- Cpu4                          -----------
+ref count      : 1
+.Error2         : listened by port : 23, 
+.Version        : listened by port : 6, 
+.IErr           : listened by port : 14, 23, 
+.FDMFault       : listened by port : 13, 
+.McErr          : listened by port : 14, 23, 
+.ThermTrip      : listened by port : 13, 
+.MirrorFailChMask : listened by port : 23, 
+----------------- port0_link_status_mon         -----------
+ref count      : 1
+.MonSenValue    : listened by port : 13, 
+----------------- MutualAuthenticationRootCert6 -----------
+ref count      : 1
+.CRLFilePath    : listened by port : 10, 
+.hashId         : listened by port : 10, 
+.hashValue      : listened by port : 10, 
+----------------- ssd_bit1_pred_mon-caa         -----------
+ref count      : 1
+.MonSenValue    : listened by port : 13, 
+----------------- PcieAbnInfo                   -----------
+ref count      : 1
+----------------- NPUOverVoltageInfo            -----------
+ref count      : 1
+----------------- 10GEPHYClockInfo              -----------
+ref count      : 1
+----------------- LogicalDriveConnector-ee01    -----------
+ref count      : 1
+.Present        : listened by port : 13, 
+----------------- Memory160                     -----------
+ref count      : 1
+.Presence       : listened by port : 13, 
+.FDMFault       : listened by port : 13, 
+.ReplaceFlag    : listened by port : 13, 
+----------------- ComNPU-105                    -----------
+ref count      : 1
+.Health         : listened by port : 13, 
+----------------- OcpBandWidthDecreaseInfo      -----------
+ref count      : 1
+----------------- PCIeCardVoltGetFailInfo       -----------
+ref count      : 1
+----------------- VirtualVPDConnect-ca9         -----------
+ref count      : 1
+.Present        : listened by port : 13, 
+----------------- LDAPCert5_1                   -----------
+ref count      : 1
+----------------- FrontDiskBPInfo               -----------
+ref count      : 1
+----------------- MutualAuthenticationRootCert7 -----------
+ref count      : 1
+.CRLFilePath    : listened by port : 10, 
+.hashId         : listened by port : 10, 
+.hashValue      : listened by port : 10, 
+----------------- 1822Chip1V2HighInfo           -----------
+ref count      : 1
+----------------- SoCBoardMajorInfo             -----------
+ref count      : 1
+----------------- NPU-105                       -----------
+ref count      : 1
+.IErr           : listened by port : 23, 
+.FDMFault       : listened by port : 13, 
+.IMUState       : listened by port : 23, 
+.RstOut         : listened by port : 23, 
+----------------- ComNPU-106                    -----------
+ref count      : 1
+.Health         : listened by port : 13, 
+----------------- SSL                           -----------
+ref count      : 1
+.SSLMasterKeyId : listened by port : 29, 
+.CertStatus     : listened by port : 10, 
+----------------- ElectValveOut12VHighInfo      -----------
+ref count      : 1
+----------------- UserRoleUser                  -----------
+ref count      : 1
+.VMMMgnt        : listened by port : 29, 
+.KVMMgnt        : listened by port : 29, 
+----------------- LDAPCert5_2                   -----------
+ref count      : 1
+----------------- Stby3_3V_LswClockGetFailInfo  -----------
+ref count      : 1
+----------------- CPUBoardReplaceInfo           -----------
+ref count      : 1
+----------------- MutualAuthenticationRootCert8 -----------
+ref count      : 1
+.CRLFilePath    : listened by port : 10, 
+.hashId         : listened by port : 10, 
+.hashValue      : listened by port : 10, 
+----------------- Stdby1_05VHighInfo            -----------
+ref count      : 1
+----------------- ComHdd8-c                     -----------
+ref count      : 1
+.Health         : listened by port : 13, 
+----------------- ComNPU-107                    -----------
+ref count      : 1
+.Health         : listened by port : 13, 
+----------------- DCustomPolOutletTemp-1        -----------
+ref count      : 1
+----------------- NPU-106                       -----------
+ref count      : 1
+.IErr           : listened by port : 23, 
+.FDMFault       : listened by port : 13, 
+.IMUState       : listened by port : 23, 
+.RstOut         : listened by port : 23, 
+----------------- ComHddConnect6-c              -----------
+ref count      : 1
+.Present        : listened by port : 13, 
+----------------- MutualAuthenticationRootCert9 -----------
+ref count      : 1
+.CRLFilePath    : listened by port : 10, 
+.hashId         : listened by port : 10, 
+.hashValue      : listened by port : 10, 
+----------------- PICCard3V3HighInfo            -----------
+ref count      : 1
+----------------- SysSFPMaxTmp                  -----------
+ref count      : 1
+.Health         : listened by port : 6, 13, 
+----------------- LDAPCert5_3                   -----------
+ref count      : 1
+----------------- Fan7Fspeed                    -----------
+ref count      : 1
+.Health         : listened by port : 6, 13, 
+----------------- WEBHTTPS                      -----------
+ref count      : 1
+.State          : listened by port : 29, 27, 17, 10, 
+.Port           : listened by port : 29, 27, 17, 10, 
+----------------- RaidComLossInfo               -----------
+ref count      : 1
+----------------- ComNPU-108                    -----------
+ref count      : 1
+.Health         : listened by port : 13, 
+----------------- NPU-107                       -----------
+ref count      : 1
+.IErr           : listened by port : 23, 
+.FDMFault       : listened by port : 13, 
+.IMUState       : listened by port : 23, 
+.RstOut         : listened by port : 23, 
+----------------- NCPortInfo                    -----------
+ref count      : 1
+----------------- LDAPCert5_4                   -----------
+ref count      : 1
+----------------- HiAMCpldSelfcheckInfo         -----------
+ref count      : 1
+----------------- RAIDBBUInstallInfo            -----------
+ref count      : 1
+----------------- PCIeRetimerUpfailInfo         -----------
+ref count      : 1
+----------------- OutletTempMinorInfo           -----------
+ref count      : 1
+----------------- NPU-108                       -----------
+ref count      : 1
+.IErr           : listened by port : 23, 
+.FDMFault       : listened by port : 13, 
+.IMUState       : listened by port : 23, 
+.RstOut         : listened by port : 23, 
+----------------- ComNPU-109                    -----------
+ref count      : 1
+.Health         : listened by port : 13, 
+----------------- RaidCardBBUTempInfo           -----------
+ref count      : 1
+----------------- Sys1_8VHighInfo               -----------
+ref count      : 1
+----------------- LDAPCert5_5                   -----------
+ref count      : 1
+----------------- FabricNotInstallInfo          -----------
+ref count      : 1
+----------------- ComPS                         -----------
+ref count      : 1
+.Health         : listened by port : 13, 
+----------------- KRBCommon                     -----------
+ref count      : 1
+----------------- Stdby1_05VLowInfo             -----------
+ref count      : 1
+----------------- link_status_4-3               -----------
+ref count      : 1
+.Health         : listened by port : 6, 13, 
+----------------- FabricPowerOffingInfo         -----------
+ref count      : 1
+----------------- Cpu:C                         -----------
+ref count      : 1
+----------------- BBUCellOverTemMajInfo         -----------
+ref count      : 1
+----------------- NPU-109                       -----------
+ref count      : 1
+.IErr           : listened by port : 23, 
+.FDMFault       : listened by port : 13, 
+.IMUState       : listened by port : 23, 
+.RstOut         : listened by port : 23, 
+----------------- LDAPCert5_6                   -----------
+ref count      : 1
+----------------- SecurityModuleConnect         -----------
+ref count      : 1
+.Present        : listened by port : 13, 
+----------------- PeakClippingInvalidInfo       -----------
+ref count      : 1
+----------------- Memory270                     -----------
+ref count      : 1
+.Presence       : listened by port : 13, 
+.FDMFault       : listened by port : 13, 
+.ReplaceFlag    : listened by port : 13, 
+----------------- CpuCoreTempMinorInfo          -----------
+ref count      : 1
+----------------- SnmpCommWorkKey               -----------
+ref count      : 1
+.WorkKey        : recv event count: 1 : listened by port : 29, 13, 1, 14, 10, 
+----------------- AllHAMCpldUpgrade-1           -----------
+ref count      : 1
+----------------- Cpu4NoisyCoreTempThermal      -----------
+ref count      : 1
+----------------- FIOInletLTempFailInfo         -----------
+ref count      : 1
+----------------- PCIeHardwareFailureInfo       -----------
+ref count      : 1
+----------------- LDAPCert5_7                   -----------
+ref count      : 1
+----------------- SecLSDiffLRPresHighInfo       -----------
+ref count      : 1
+----------------- SysRestart                    -----------
+ref count      : 1
+.Health         : listened by port : 6, 13, 
+----------------- BoardIDFailInfo               -----------
+ref count      : 1
+----------------- DOutletTemp-1                 -----------
+ref count      : 1
+.Health         : listened by port : 6, 13, 
+----------------- PSUSingleInputLostInfo        -----------
+ref count      : 1
+----------------- AnnualAvgHumiMinorInfo        -----------
+ref count      : 1
+----------------- OCPHWFaultMinorInfo           -----------
+ref count      : 1
+----------------- SYScom                        -----------
+ref count      : 1
+----------------- SmtpConfig:C                  -----------
+ref count      : 1
+----------------- LDAPCert5_8                   -----------
+ref count      : 1
+----------------- Cpu4Status                    -----------
+ref count      : 1
+.Health         : listened by port : 6, 13, 
+----------------- CpuVRDTempMinorInfo           -----------
+ref count      : 1
+----------------- BBUbatterylowInfo             -----------
+ref count      : 1
+----------------- ComMemory060                  -----------
+ref count      : 1
+.Health         : listened by port : 13, 
+----------------- FabricSWHighInfo              -----------
+ref count      : 1
+----------------- PcieSerialCableInfo           -----------
+ref count      : 1
+----------------- PwrCapStatus                  -----------
+ref count      : 1
+.Health         : listened by port : 6, 13, 
+----------------- LDAPCert5_9                   -----------
+ref count      : 1
+----------------- PCIeMemoryMinorFaultInfo      -----------
+ref count      : 1
+----------------- ComputerSystem0               -----------
+ref count      : 1
+.iBMAEvent      : listened by port : 13, 
+----------------- LomCard-3                     -----------
+ref count      : 1
+.FDMFault       : listened by port : 13, 
+.Eid            : listened by port : 17, 
+.Health         : listened by port : 13, 
+.HotplugCtrlStatus : listened by port : 2, 
+.PrePlug        : listened by port : 17, 
+.ReplaceFlag    : listened by port : 13, 
+----------------- EventInformation:C            -----------
+ref count      : 1
+----------------- NICErrorInfo                  -----------
+ref count      : 1
+----------------- port1_link_status_exp         -----------
+ref count      : 1
+.Value          : listened by port : 13, 
+----------------- SystemManagerInfo0            -----------
+ref count      : 1
+----------------- SMezzPowerOffInfo             -----------
+ref count      : 1
+----------------- Standby2_5VHighInfo           -----------
+ref count      : 1
+----------------- MeshCardSD6603CoreTempInfo    -----------
+ref count      : 1
+----------------- BaseLSWFaultInfo              -----------
+ref count      : 1
+----------------- PchTempFailInfo               -----------
+ref count      : 1
+----------------- LswPortLinkDownInfo           -----------
+ref count      : 1
+----------------- SSLCert10                     -----------
+ref count      : 1
+.SSLMasterKeyId : listened by port : 29, 
+.CertStatus     : listened by port : 10, 
+----------------- BmcOpeLogFullMntr             -----------
+ref count      : 1
+.State          : listened by port : 13, 
+----------------- TrapConfig:C                  -----------
+ref count      : 1
+----------------- PcieSlot2_3f                  -----------
+ref count      : 1
+----------------- BoardMismatchInfo             -----------
+ref count      : 1
+----------------- NC12VHighInfo                 -----------
+ref count      : 1
+----------------- CpuDDRVPP_CDLowInfo           -----------
+ref count      : 1
+----------------- IO100MClockInfo               -----------
+ref count      : 1
+----------------- SSLCert11                     -----------
+ref count      : 1
+.SSLMasterKeyId : listened by port : 29, 
+.CertStatus     : listened by port : 10, 
+----------------- RaidPHY2-ee01                 -----------
+ref count      : 1
+----------------- Sys1_1VGetFailInfo            -----------
+ref count      : 1
+----------------- Payload:C                     -----------
+ref count      : 1
+----------------- Fan5RStatus                   -----------
+ref count      : 1
+.Health         : listened by port : 6, 13, 
+----------------- BBUInDischargingStateInfo     -----------
+ref count      : 1
+----------------- GPUBoardReplaceInfo           -----------
+ref count      : 1
+----------------- RaidPHY1-ee01                 -----------
+ref count      : 1
+----------------- SASCable_sen                  -----------
+ref count      : 1
+.Health         : listened by port : 6, 13, 
+----------------- LDAPCert:C                    -----------
+ref count      : 1
+----------------- ComMemory170                  -----------
+ref count      : 1
+.Health         : listened by port : 13, 
+----------------- HDD_RWM_exp-caa               -----------
+ref count      : 1
+.Value          : listened by port : 13, 
+----------------- Sys1_1VLowInfo                -----------
+ref count      : 1
+----------------- PCIeVoltageMajorFaultInfo     -----------
+ref count      : 1
+----------------- SSLCert12                     -----------
+ref count      : 1
+.SSLMasterKeyId : listened by port : 29, 
+.CertStatus     : listened by port : 10, 
+----------------- ComHDDBackplane-c             -----------
+ref count      : 1
+.Health         : listened by port : 13, 
+----------------- CpuProchotInfo                -----------
+ref count      : 1
+----------------- PCIeSwVIOFailInfo             -----------
+ref count      : 1
+----------------- NPUPFAEMntr-106               -----------
+ref count      : 1
+.State          : listened by port : 13, 
+----------------- OMPort2-3                     -----------
+ref count      : 1
+----------------- SSLCert13                     -----------
+ref count      : 1
+.SSLMasterKeyId : listened by port : 29, 
+.CertStatus     : listened by port : 10, 
+----------------- SyncChannelStatusInfo         -----------
+ref count      : 1
+----------------- NPUPFAEMntr-107               -----------
+ref count      : 1
+.State          : listened by port : 13, 
+----------------- NPUPFAEMntr-105               -----------
+ref count      : 1
+.State          : listened by port : 13, 
+----------------- CpuFRUReadFailInfo            -----------
+ref count      : 1
+----------------- RiserCard1Connect             -----------
+ref count      : 1
+.Present        : listened by port : 13, 
+----------------- NPUPFAEMntr-108               -----------
+ref count      : 1
+.State          : listened by port : 13, 
+----------------- CpuVsaGetFailedInfo           -----------
+ref count      : 1
+----------------- ComNICCard-121                -----------
+ref count      : 1
+.Health         : listened by port : 13, 
+----------------- PcieSlot2Connect-9            -----------
+ref count      : 1
+.Present        : listened by port : 13, 
+----------------- ProxyVmm0                     -----------
+ref count      : 1
+.Port           : listened by port : 14, 
+.State          : listened by port : 14, 
+----------------- Cpu3EnergyCoreTempThermal     -----------
+ref count      : 1
+----------------- LicenseFeatureKey             -----------
+ref count      : 1
+----------------- ThresholdSensor:C             -----------
+ref count      : 1
+----------------- BaseboardConnector            -----------
+ref count      : 1
+.Present        : listened by port : 13, 
+----------------- ComNICCard-122                -----------
+ref count      : 1
+.Health         : listened by port : 13, 
+----------------- MainBrdTrainErrorInfo         -----------
+ref count      : 1
+----------------- ssd_bit3_fault_mon-caa        -----------
+ref count      : 1
+.MonSenValue    : listened by port : 13, 
+----------------- RaidCardPFAEInfo              -----------
+ref count      : 1
+----------------- Memory340ReplaceMntr          -----------
+ref count      : 1
+.State          : listened by port : 13, 
+----------------- Fru0Elabel-3                  -----------
+ref count      : 1
+.MfgDateTime    : listened by port : 19, 
+.SysSerialNum   : listened by port : 2, 
+.ProductAssetTag : listened by port : 13, 
+.BoardSerialNumber : listened by port : 13, 25, 
+.ChassisSerialNumber : listened by port : 13, 
+.ProductSerialNumber : listened by port : 25, 
+----------------- IOBoardTempAlertInfo          -----------
+ref count      : 1
+----------------- PSUCurrentUnequalInfo         -----------
+ref count      : 1
+----------------- ComSSDConnect0-c              -----------
+ref count      : 1
+.Present        : listened by port : 13, 
+----------------- ComNICCard-123                -----------
+ref count      : 1
+.Health         : listened by port : 13, 
+----------------- Ch2MirrorFailInfo             -----------
+ref count      : 1
+----------------- 1822Chip1V2LowInfo            -----------
+ref count      : 1
+----------------- HAMFw6Connect-1               -----------
+ref count      : 1
+.Present        : listened by port : 13, 
+----------------- PcbVersion-10a                -----------
+ref count      : 1
+----------------- BbuPrensetLostInfo            -----------
+ref count      : 1
+----------------- Fan3FStatus                   -----------
+ref count      : 1
+.Health         : listened by port : 6, 13, 
+----------------- Cpu1MemTemp                   -----------
+ref count      : 1
+.Health         : listened by port : 6, 13, 
+----------------- ComNICCard-124                -----------
+ref count      : 1
+.Health         : listened by port : 13, 
+----------------- Chassis:C                     -----------
+ref count      : 1
+----------------- MutualAuthenticationCliCert:C -----------
+ref count      : 1
+----------------- voltHighMaintInfo             -----------
+ref count      : 1
+----------------- PcbVersion-10b                -----------
+ref count      : 1
+----------------- OMTempLowAlarmInfo            -----------
+ref count      : 1
+----------------- SMS:C                         -----------
+ref count      : 1
+----------------- Disk1-c                       -----------
+ref count      : 1
+.Health         : listened by port : 6, 13, 
+----------------- SSL:C                         -----------
+ref count      : 1
+----------------- EnclosurTimeoutInfo           -----------
+ref count      : 1
+----------------- BBUWiringErrorMajorInfo       -----------
+ref count      : 1
+----------------- FANI2CFailInfo                -----------
+ref count      : 1
+----------------- PcbVersion-10c                -----------
+ref count      : 1
+----------------- FabricLSWVoltHighInfo         -----------
+ref count      : 1
+----------------- BBUMOSOverTempInfo            -----------
+ref count      : 1
+----------------- SnmpPrivacyPwdWorkKey         -----------
+ref count      : 1
+.WorkKey        : recv event count: 1 : listened by port : 29, 13, 1, 14, 10, 
+----------------- DftStatus:C                   -----------
+ref count      : 1
+----------------- PCIeCpuCriticalFaultInfo      -----------
+ref count      : 1
+----------------- FabricPowerOffReqInfo         -----------
+ref count      : 1
+----------------- MemTempMinorInfo              -----------
+ref count      : 1
+----------------- SecurityLogFull               -----------
+ref count      : 1
+.Health         : listened by port : 6, 13, 
+----------------- NPUCustomAiCoreTherm-105      -----------
+ref count      : 1
+----------------- AcSpCollectSysRestartInfo     -----------
+ref count      : 1
+----------------- FanbdPowerFailedInfo          -----------
+ref count      : 1
+----------------- MemBrdPairInfo                -----------
+ref count      : 1
+----------------- ADCConnector                  -----------
+ref count      : 1
+.Present        : listened by port : 13, 
+----------------- NPUCustomAiCoreTherm-106      -----------
+ref count      : 1
+----------------- BkpMiscCableInfo              -----------
+ref count      : 1
+----------------- ssd_bit6_fault_mon-caa        -----------
+ref count      : 1
+.MonSenValue    : listened by port : 13, 
+----------------- Ch5MirrorFailInfo             -----------
+ref count      : 1
+----------------- RiserCardVoltLowMaintenanceInfo-----------
+ref count      : 1
+----------------- NPUCustomAiCoreTherm-107      -----------
+ref count      : 1
+----------------- CLOCK_Connect-1               -----------
+ref count      : 1
+.Present        : listened by port : 13, 
+----------------- IOBoardNoneFatalErrInfo       -----------
+ref count      : 1
+----------------- Fan4FPresence                 -----------
+ref count      : 1
+.Health         : listened by port : 6, 13, 
+----------------- ComButton                     -----------
+ref count      : 1
+.Health         : listened by port : 13, 
+----------------- CpuTempFailedInfo             -----------
+ref count      : 1
+----------------- SDCardRebuildDoneInfo         -----------
+ref count      : 1
+----------------- CpuADCGetFailedInfo           -----------
+ref count      : 1
+----------------- CPU_VCCPVGetFailInfo          -----------
+ref count      : 1
+----------------- CpuMismatchInfo               -----------
+ref count      : 1
+----------------- NPUCustomAiCoreTherm-108      -----------
+ref count      : 1
+----------------- ComVPDConnect2-c              -----------
+ref count      : 1
+.Present        : listened by port : 13, 
+----------------- RmcpConfig:C                  -----------
+ref count      : 1
+----------------- LswCmeshSwithInfo             -----------
+ref count      : 1
+----------------- PcbVersion-ee                 -----------
+ref count      : 1
+----------------- OpticalModuleTemp-3           -----------
+ref count      : 1
+.Health         : listened by port : 6, 13, 
+----------------- PcieFruFailInfo               -----------
+ref count      : 1
+----------------- NPUCustomAiCoreTherm-109      -----------
+ref count      : 1
+----------------- FIO3V3FailInfo                -----------
+ref count      : 1
+----------------- Stby1_0VLswGetFailInfo        -----------
+ref count      : 1
+----------------- ssd_huawei_fault_exp-ca9      -----------
+ref count      : 1
+.Value          : listened by port : 13, 
+----------------- SwitchBrdVoltHighInfo         -----------
+ref count      : 1
+----------------- Memory060                     -----------
+ref count      : 1
+.Presence       : listened by port : 13, 
+.FDMFault       : listened by port : 13, 
+.ReplaceFlag    : listened by port : 13, 
+----------------- ComPowerSupply-d              -----------
+ref count      : 1
+.Health         : listened by port : 13, 
+----------------- HAM6Connect-1                 -----------
+ref count      : 1
+.Present        : listened by port : 13, 
+----------------- PsFanStatus-d                 -----------
+ref count      : 1
+.Health         : listened by port : 6, 13, 
+----------------- LDAPCert4_1                   -----------
+ref count      : 1
+----------------- FabricRestartInfo             -----------
+ref count      : 1
+----------------- CpuADCHighInfo                -----------
+ref count      : 1
+----------------- HiAMVoltageUpperInfo          -----------
+ref count      : 1
+----------------- PCIeMemoryMajorFaultInfo      -----------
+ref count      : 1
+----------------- BiosBootTimeoutInfo           -----------
+ref count      : 1
+----------------- ComHdd0-c01                   -----------
+ref count      : 1
+.Health         : listened by port : 13, 
+----------------- ComPowerSupply-e              -----------
+ref count      : 1
+.Health         : listened by port : 13, 
+----------------- Fan4PresenceThermal           -----------
+ref count      : 1
+----------------- PsFanStatus-e                 -----------
+ref count      : 1
+.Health         : listened by port : 6, 13, 
+----------------- TH1OutScalingInfo             -----------
+ref count      : 1
+----------------- LDAPCert4_2                   -----------
+ref count      : 1
+----------------- Ps-d                          -----------
+ref count      : 1
+----------------- Stdby1_5VLowInfo              -----------
+ref count      : 1
+----------------- Fan7PresenceThermal           -----------
+ref count      : 1
+----------------- MCUFirmwareName-10b           -----------
+ref count      : 1
+----------------- NVME1_Slot7                   -----------
+ref count      : 1
+----------------- PSTempInfo                    -----------
+ref count      : 1
+----------------- ComPowerSupply-f              -----------
+ref count      : 1
+.Health         : listened by port : 13, 
+----------------- PsFanStatus-f                 -----------
+ref count      : 1
+.Health         : listened by port : 6, 13, 
+----------------- LDAPCert4_3                   -----------
+ref count      : 1
+----------------- ComHdd7-c                     -----------
+ref count      : 1
+.Health         : listened by port : 13, 
+----------------- Ps-e                          -----------
+ref count      : 1
+----------------- Upgrade:C                     -----------
+ref count      : 1
+----------------- PcieCard:C                    -----------
+ref count      : 1
+----------------- PMEServiceConfig              -----------
+ref count      : 1
+.BoardInfoCollectEnable : listened by port : 19, 
+----------------- Cpu1NoisyCoreTempThermal      -----------
+ref count      : 1
+----------------- FdmConfig                     -----------
+ref count      : 1
+----------------- Upgrade                       -----------
+ref count      : 1
+.UpgradeFileMasterKeyId : listened by port : 29, 
+.Degrade        : listened by port : 8, 
+.UpgradedFlag   : listened by port : 29, 23, 13, 22, 19, 1, 14, 10, 
+.PreRollbackFlag : listened by port : 29, 23, 13, 22, 19, 1, 14, 10, 
+----------------- MemInPoorContractInfo         -----------
+ref count      : 1
+----------------- LDAPCert4_4                   -----------
+ref count      : 1
+----------------- CARD2com                      -----------
+ref count      : 1
+----------------- Ps-f                          -----------
+ref count      : 1
+----------------- ComHddConnect5-c              -----------
+ref count      : 1
+.Present        : listened by port : 13, 
+----------------- FanBkpMosTempHighInfo         -----------
+ref count      : 1
+----------------- LicenseSaleItem               -----------
+ref count      : 1
+----------------- SasConnectErrInfo             -----------
+ref count      : 1
+----------------- DevOnlineInfo                 -----------
+ref count      : 1
+----------------- MCUFirmwareName-10c           -----------
+ref count      : 1
+----------------- CertSignWeakInfo              -----------
+ref count      : 1
+----------------- LDAPCert4_5                   -----------
+ref count      : 1
+----------------- link_status_3-3               -----------
+ref count      : 1
+.Health         : listened by port : 6, 13, 
+----------------- DiskForeignInfo               -----------
+ref count      : 1
+----------------- OnePower:C                    -----------
+ref count      : 1
+----------------- CpuVccanaLowInfo              -----------
+ref count      : 1
+----------------- CpuVolHighWaringInfo          -----------
+ref count      : 1
+----------------- NCBrdStat1Info                -----------
+ref count      : 1
+----------------- LDAPCert4_6                   -----------
+ref count      : 1
+----------------- FanNotPresentMajorInfo        -----------
+ref count      : 1
+----------------- Hdd1-c02                      -----------
+ref count      : 1
+.RebuildState   : listened by port : 13, 
+.Id             : listened by port : 23, 11, 
+.ReplaceFlag    : listened by port : 13, 
+----------------- Memory170                     -----------
+ref count      : 1
+.Presence       : listened by port : 13, 
+.FDMFault       : listened by port : 13, 
+.ReplaceFlag    : listened by port : 13, 
+----------------- ARCardI2CFailMajorInfo        -----------
+ref count      : 1
+----------------- NPUEccCountMajorInfo          -----------
+ref count      : 1
+----------------- CCUCableInfo                  -----------
+ref count      : 1
+----------------- MCUFirmwareName-10a           -----------
+ref count      : 1
+----------------- LDAPCert4_7                   -----------
+ref count      : 1
+----------------- DBComPS1                      -----------
+ref count      : 1
+.Health         : listened by port : 13, 
+----------------- NVMeVPD-caa                   -----------
+ref count      : 1
+----------------- FanbdOverTempInfo             -----------
+ref count      : 1
+----------------- RaidFru-ee01                  -----------
+ref count      : 1
+----------------- Port1LinkDownMntr-121         -----------
+ref count      : 1
+.State          : listened by port : 13, 
+----------------- LDAPCert4_8                   -----------
+ref count      : 1
+----------------- DBComPS2                      -----------
+ref count      : 1
+.Health         : listened by port : 13, 
+----------------- VCCP_1V0_CPULowInfo           -----------
+ref count      : 1
+----------------- Cpu1EnergyCoreTempThermal     -----------
+ref count      : 1
+----------------- ExpFRUReadFailInfo            -----------
+ref count      : 1
+----------------- Port0                         -----------
+ref count      : 1
+.LinkStatusBMA  : listened by port : 13, 
+.ActualMac      : listened by port : 17, 
+----------------- Warning:C                     -----------
+ref count      : 1
+----------------- LDAPCert4_9                   -----------
+ref count      : 1
+----------------- DBComPS3                      -----------
+ref count      : 1
+.Health         : listened by port : 13, 
+----------------- Port1                         -----------
+ref count      : 1
+.LinkStatusBMA  : listened by port : 13, 
+.ActualMac      : listened by port : 17, 
+----------------- Port1LinkDownMntr-123         -----------
+ref count      : 1
+.State          : listened by port : 13, 
+----------------- ComFan                        -----------
+ref count      : 1
+.Health         : listened by port : 13, 
+----------------- DBComPS4                      -----------
+ref count      : 1
+.Health         : listened by port : 13, 
+----------------- hdd_temperature_exp-caa       -----------
+ref count      : 1
+.Value          : send event count: 3259 : listened by port : 13, 
+----------------- ComMgmtPort                   -----------
+ref count      : 1
+.Health         : listened by port : 13, 
+----------------- Port2                         -----------
+ref count      : 1
+.LinkStatusBMA  : listened by port : 13, 
+.ActualMac      : listened by port : 17, 
+----------------- Port1LinkDownMntr-124         -----------
+ref count      : 1
+.State          : listened by port : 13, 
+----------------- log_0                         -----------
+ref count      : 1
+----------------- rmcp                          -----------
+ref count      : 1
+.LanPlusState   : listened by port : 13, 15, 
+.Port2          : listened by port : 27, 
+.Port1          : listened by port : 27, 
+.LanState       : listened by port : 13, 15, 
+----------------- Stby1_5VFailInfo              -----------
+ref count      : 1
+----------------- User1                         -----------
+ref count      : 1
+.SnmpAuthProtocolStatus : listened by port : 13, 
+.Privilege      : listened by port : 29, 
+.IsUserEnable   : listened by port : 29, 
+.LoginInterface : listened by port : 29, 
+.SnmpPrivProtocol : listened by port : 29, 10, 
+.SnmpPrivProtocolStatus : listened by port : 13, 
+.UserName       : listened by port : 29, 
+.SnmpAuthProtocol : listened by port : 29, 
+.PassWord       : listened by port : 29, 
+----------------- MainboardLOMAERInfo           -----------
+ref count      : 1
+----------------- FabricSwitchEepFailInfo       -----------
+ref count      : 1
+----------------- CpuVddqTempFailInfo           -----------
+ref count      : 1
+----------------- InletTempMinorInfo            -----------
+ref count      : 1
+----------------- PICRemovedInfo                -----------
+ref count      : 1
+----------------- PCIeBandWidthDecreaseInfo     -----------
+ref count      : 1
+----------------- Port3                         -----------
+ref count      : 1
+.LinkStatusBMA  : listened by port : 13, 
+.ActualMac      : listened by port : 17, 
+----------------- CanbusFailInfo                -----------
+ref count      : 1
+----------------- SMezzNoMainBoardInfo          -----------
+ref count      : 1
+----------------- NPUpolicy1classCon-105        -----------
+ref count      : 1
+.Present        : listened by port : 13, 
+----------------- User2                         -----------
+ref count      : 1
+.SnmpAuthProtocolStatus : listened by port : 13, 
+.Privilege      : listened by port : 29, 
+.IsUserEnable   : listened by port : 29, 
+.LoginInterface : listened by port : 29, 
+.SnmpPrivProtocol : listened by port : 29, 10, 
+.SnmpPrivProtocolStatus : listened by port : 13, 
+.UserName       : listened by port : 29, 
+.SnmpAuthProtocol : listened by port : 29, 
+.PassWord       : listened by port : 29, 
+----------------- op1_present_mon-121           -----------
+ref count      : 1
+.MonSenValue    : listened by port : 13, 
+----------------- MezzTempMajorInfo             -----------
+ref count      : 1
+----------------- NandBlockInfo                 -----------
+ref count      : 1
+----------------- LswCmeshGroupFaultInfo        -----------
+ref count      : 1
+----------------- OneMorePsInfo                 -----------
+ref count      : 1
+----------------- GetTempFailNormInfo           -----------
+ref count      : 1
+----------------- RMountEarFru-15               -----------
+ref count      : 1
+----------------- HAMFw2Connect-1               -----------
+ref count      : 1
+.Present        : listened by port : 13, 
+----------------- FabricCPUTempMinorInfo        -----------
+ref count      : 1
+----------------- NPUpolicy1classCon-106        -----------
+ref count      : 1
+.Present        : listened by port : 13, 
+----------------- User3                         -----------
+ref count      : 1
+.SnmpAuthProtocolStatus : listened by port : 13, 
+.Privilege      : listened by port : 29, 
+.IsUserEnable   : listened by port : 29, 
+.LoginInterface : listened by port : 29, 
+.SnmpPrivProtocol : listened by port : 29, 10, 
+.SnmpPrivProtocolStatus : listened by port : 13, 
+.UserName       : listened by port : 29, 
+.SnmpAuthProtocol : listened by port : 29, 
+.PassWord       : listened by port : 29, 
+----------------- op1_present_mon-122           -----------
+ref count      : 1
+.MonSenValue    : listened by port : 13, 
+----------------- PolicySysDisksTemp            -----------
+ref count      : 1
+----------------- OMTempReadFailInfo            -----------
+ref count      : 1
+----------------- BbuCtlBoardMinorInfo          -----------
+ref count      : 1
+----------------- VirtualVPDConnect-caa         -----------
+ref count      : 1
+.Present        : listened by port : 13, 
+----------------- ArmDefaultInletPolicy         -----------
+ref count      : 1
+----------------- SelStatus                     -----------
+ref count      : 1
+.Health         : listened by port : 6, 13, 
+----------------- Fan4RStatus                   -----------
+ref count      : 1
+.Health         : listened by port : 6, 13, 
+----------------- Diagnose:C                    -----------
+ref count      : 1
+----------------- PMemoryMajorInfo              -----------
+ref count      : 1
+----------------- User4                         -----------
+ref count      : 1
+.SnmpAuthProtocolStatus : listened by port : 13, 
+.Privilege      : listened by port : 29, 
+.IsUserEnable   : listened by port : 29, 
+.LoginInterface : listened by port : 29, 
+.SnmpPrivProtocol : listened by port : 29, 10, 
+.SnmpPrivProtocolStatus : listened by port : 13, 
+.UserName       : listened by port : 29, 
+.SnmpAuthProtocol : listened by port : 29, 
+.PassWord       : listened by port : 29, 
+----------------- op1_present_mon-123           -----------
+ref count      : 1
+.MonSenValue    : listened by port : 13, 
+----------------- FIOInletRtempInfo             -----------
+ref count      : 1
+----------------- GpuCarrBoardPFAEInfo          -----------
+ref count      : 1
+----------------- NPUpolicy1classCon-107        -----------
+ref count      : 1
+.Present        : listened by port : 13, 
+----------------- FabricSwitchClockInfo         -----------
+ref count      : 1
+----------------- PCIeTempReadFailInfo          -----------
+ref count      : 1
+----------------- PICCard12VFailInfo            -----------
+ref count      : 1
+----------------- PICTempGetFailInfo            -----------
+ref count      : 1
+----------------- NPUpolicy1classCon-108        -----------
+ref count      : 1
+.Present        : listened by port : 13, 
+----------------- OMPort1-3                     -----------
+ref count      : 1
+----------------- ComMemory070                  -----------
+ref count      : 1
+.Health         : listened by port : 13, 
+----------------- op1_present_mon-124           -----------
+ref count      : 1
+.MonSenValue    : listened by port : 13, 
+----------------- IOBoardFaulInfo               -----------
+ref count      : 1
+----------------- BladeRemovedInfo              -----------
+ref count      : 1
+----------------- User5                         -----------
+ref count      : 1
+.SnmpAuthProtocolStatus : listened by port : 13, 
+.Privilege      : listened by port : 29, 
+.IsUserEnable   : listened by port : 29, 
+.LoginInterface : listened by port : 29, 
+.SnmpPrivProtocol : listened by port : 29, 10, 
+.SnmpPrivProtocolStatus : listened by port : 13, 
+.UserName       : listened by port : 29, 
+.SnmpAuthProtocol : listened by port : 29, 
+.PassWord       : listened by port : 29, 
+----------------- MainBoard                     -----------
+ref count      : 1
+.Health         : listened by port : 13, 
+----------------- Dimm300                       -----------
+ref count      : 1
+.Health         : listened by port : 6, 13, 
+----------------- SMMToActiveInfo               -----------
+ref count      : 1
+----------------- NPUpolicy1classCon-109        -----------
+ref count      : 1
+.Present        : listened by port : 13, 
+----------------- User6                         -----------
+ref count      : 1
+.SnmpAuthProtocolStatus : listened by port : 13, 
+.Privilege      : listened by port : 29, 
+.IsUserEnable   : listened by port : 29, 
+.LoginInterface : listened by port : 29, 
+.SnmpPrivProtocol : listened by port : 29, 10, 
+.SnmpPrivProtocolStatus : listened by port : 13, 
+.UserName       : listened by port : 29, 
+.SnmpAuthProtocol : listened by port : 29, 
+.PassWord       : listened by port : 29, 
+----------------- GpuBoardClockInfo             -----------
+ref count      : 1
+----------------- EPMTempFailInfo               -----------
+ref count      : 1
+----------------- DiscreteSensor:C              -----------
+ref count      : 1
+----------------- ExpCommInfo                   -----------
+ref count      : 1
+----------------- port1_link_status_mon-3       -----------
+ref count      : 1
+.MonSenValue    : listened by port : 13, 
+----------------- DftVersion:C                  -----------
+ref count      : 1
+----------------- risercard-ee                  -----------
+ref count      : 1
+.Health         : listened by port : 13, 
+----------------- Fan8FStatus                   -----------
+ref count      : 1
+.Health         : listened by port : 6, 13, 
+----------------- LeakCardAbsentInfo            -----------
+ref count      : 1
+----------------- SysPwrSigDropInfo             -----------
+ref count      : 1
+----------------- User7                         -----------
+ref count      : 1
+.SnmpAuthProtocolStatus : listened by port : 13, 
+.Privilege      : listened by port : 29, 
+.IsUserEnable   : listened by port : 29, 
+.LoginInterface : listened by port : 29, 
+.SnmpPrivProtocol : listened by port : 29, 10, 
+.SnmpPrivProtocolStatus : listened by port : 13, 
+.UserName       : listened by port : 29, 
+.SnmpAuthProtocol : listened by port : 29, 
+.PassWord       : listened by port : 29, 
+----------------- ComNPU-10a                    -----------
+ref count      : 1
+.Health         : listened by port : 13, 
+----------------- LinePresInfo                  -----------
+ref count      : 1
+----------------- PCIeOMTempInfo                -----------
+ref count      : 1
+----------------- NPUUnderVoltageInfo           -----------
+ref count      : 1
+----------------- OutletTemp                    -----------
+ref count      : 1
+.Health         : listened by port : 6, 13, 
+----------------- SecurityModuleSelfTestInfo    -----------
+ref count      : 1
+----------------- ComPort4-3                    -----------
+ref count      : 1
+.Health         : listened by port : 13, 
+----------------- PCIeStartingMajorFaultInfo    -----------
+ref count      : 1
+----------------- User8                         -----------
+ref count      : 1
+.SnmpAuthProtocolStatus : listened by port : 13, 
+.Privilege      : listened by port : 29, 
+.IsUserEnable   : listened by port : 29, 
+.LoginInterface : listened by port : 29, 
+.SnmpPrivProtocol : listened by port : 29, 10, 
+.SnmpPrivProtocolStatus : listened by port : 13, 
+.UserName       : listened by port : 29, 
+.SnmpAuthProtocol : listened by port : 29, 
+.PassWord       : listened by port : 29, 
+----------------- NPU-10a                       -----------
+ref count      : 1
+.IErr           : listened by port : 23, 
+.FDMFault       : listened by port : 13, 
+.IMUState       : listened by port : 23, 
+.RstOut         : listened by port : 23, 
+----------------- Memory:C                      -----------
+ref count      : 1
+----------------- LicenseGeneralInfo            -----------
+ref count      : 1
+----------------- BBUOverCurrentMajorInfo       -----------
+ref count      : 1
+----------------- ComNPU-10b                    -----------
+ref count      : 1
+.Health         : listened by port : 13, 
+----------------- SoCBoardFirmwareFailureInfo   -----------
+ref count      : 1
+----------------- ChassisDevI2cFailInfo         -----------
+ref count      : 1
+----------------- SysRestartPwrBtnMntr          -----------
+ref count      : 1
+.State          : listened by port : 13, 
+----------------- User9                         -----------
+ref count      : 1
+.SnmpAuthProtocolStatus : listened by port : 13, 
+.Privilege      : listened by port : 29, 
+.IsUserEnable   : listened by port : 29, 
+.LoginInterface : listened by port : 29, 
+.SnmpPrivProtocol : listened by port : 29, 10, 
+.SnmpPrivProtocolStatus : listened by port : 13, 
+.UserName       : listened by port : 29, 
+.SnmpAuthProtocol : listened by port : 29, 
+.PassWord       : listened by port : 29, 
+----------------- NPU-10b                       -----------
+ref count      : 1
+.IErr           : listened by port : 23, 
+.FDMFault       : listened by port : 13, 
+.IMUState       : listened by port : 23, 
+.RstOut         : listened by port : 23, 
+----------------- ComNPU-10c                    -----------
+ref count      : 1
+.Health         : listened by port : 13, 
+----------------- SoCBoardElabel-105            -----------
+ref count      : 1
+.MfgDateTime    : listened by port : 19, 
+.SysSerialNum   : listened by port : 2, 
+.ProductAssetTag : listened by port : 13, 
+.BoardSerialNumber : listened by port : 13, 25, 
+.ChassisSerialNumber : listened by port : 13, 
+.ProductSerialNumber : listened by port : 25, 
+----------------- DiskFlashInfo                 -----------
+ref count      : 1
+----------------- MezzSys1_0VFailInfo           -----------
+ref count      : 1
+----------------- PCIeCpuMinorFaultInfo         -----------
+ref count      : 1
+----------------- Mem370InitErrorLogMntr        -----------
+ref count      : 1
+.State          : listened by port : 13, 
+----------------- PCIeCardFaultInfo             -----------
+ref count      : 1
+----------------- Fan2FStatus                   -----------
+ref count      : 1
+.Health         : listened by port : 6, 13, 
+----------------- NPU-10c                       -----------
+ref count      : 1
+.IErr           : listened by port : 23, 
+.FDMFault       : listened by port : 13, 
+.IMUState       : listened by port : 23, 
+.RstOut         : listened by port : 23, 
+----------------- CpuDDRVPP_CDGetFailedInfo     -----------
+ref count      : 1
+----------------- SoCBoardElabel-106            -----------
+ref count      : 1
+.MfgDateTime    : listened by port : 19, 
+.SysSerialNum   : listened by port : 2, 
+.ProductAssetTag : listened by port : 13, 
+.BoardSerialNumber : listened by port : 13, 25, 
+.ChassisSerialNumber : listened by port : 13, 
+.ProductSerialNumber : listened by port : 25, 
+----------------- CpuVDDQ_CDGetFailedInfo       -----------
+ref count      : 1
+----------------- Disk0-c                       -----------
+ref count      : 1
+.Health         : listened by port : 6, 13, 
+----------------- SoCBoardGetMiniFailInfo       -----------
+ref count      : 1
+----------------- ExpReplaceInfo                -----------
+ref count      : 1
+----------------- SoCBoardElabel-107            -----------
+ref count      : 1
+.MfgDateTime    : listened by port : 19, 
+.SysSerialNum   : listened by port : 2, 
+.ProductAssetTag : listened by port : 13, 
+.BoardSerialNumber : listened by port : 13, 25, 
+.ChassisSerialNumber : listened by port : 13, 
+.ProductSerialNumber : listened by port : 25, 
+----------------- HAM2Connect-1                 -----------
+ref count      : 1
+.Present        : listened by port : 13, 
+----------------- CPLDVer-c                     -----------
+ref count      : 1
+----------------- SysRestartCmdInfo             -----------
+ref count      : 1
+----------------- SSDPConfig                    -----------
+ref count      : 1
+.UseInterface   : listened by port : 17, 
+.Mode           : listened by port : 16, 
+.IPv6Addr       : listened by port : 17, 
+----------------- RetimerVerMismatchInfo        -----------
+ref count      : 1
+----------------- CpuCpldSelfcheckInfo          -----------
+ref count      : 1
+----------------- FabricSWOverTempMajorInfo     -----------
+ref count      : 1
+----------------- Cpu1Prochot                   -----------
+ref count      : 1
+.Health         : listened by port : 6, 13, 
+----------------- SoCBoardElabel-108            -----------
+ref count      : 1
+.MfgDateTime    : listened by port : 19, 
+.SysSerialNum   : listened by port : 2, 
+.ProductAssetTag : listened by port : 13, 
+.BoardSerialNumber : listened by port : 13, 25, 
+.ChassisSerialNumber : listened by port : 13, 
+.ProductSerialNumber : listened by port : 25, 
+----------------- PSFailureInfo                 -----------
+ref count      : 1
+----------------- iBMAUSBMassStorage:C          -----------
+ref count      : 1
+----------------- CpuBrd100MClockInfo           -----------
+ref count      : 1
+----------------- port3_link_status_mon-3       -----------
+ref count      : 1
+.MonSenValue    : listened by port : 13, 
+----------------- PcieSlot2Connect-ee           -----------
+ref count      : 1
+.Present        : listened by port : 13, 
+----------------- RS485Out12VGetFailInfo        -----------
+ref count      : 1
+----------------- cpld1                         -----------
+ref count      : 1
+----------------- MezzStandby3_3VLowInfo        -----------
+ref count      : 1
+----------------- SoCBoardElabel-109            -----------
+ref count      : 1
+.MfgDateTime    : listened by port : 19, 
+.SysSerialNum   : listened by port : 2, 
+.ProductAssetTag : listened by port : 13, 
+.BoardSerialNumber : listened by port : 13, 25, 
+.ChassisSerialNumber : listened by port : 13, 
+.ProductSerialNumber : listened by port : 25, 
+----------------- BaseCPUOvertempMajorInfo      -----------
+ref count      : 1
+----------------- BBUOputShoCirdPrtcInfo        -----------
+ref count      : 1
+----------------- ChassisPowerHighInfo          -----------
+ref count      : 1
+----------------- CpuQpiLinkInfo                -----------
+ref count      : 1
+----------------- BIO12VFailInfo                -----------
+ref count      : 1
+----------------- Policy1Class:C                -----------
+ref count      : 1
+----------------- op1_present_exp-121           -----------
+ref count      : 1
+.Value          : listened by port : 13, 
+----------------- PCIeSwVIOHighInfo             -----------
+ref count      : 1
+----------------- NodeNotInPosInfo              -----------
+ref count      : 1
+----------------- Port0-121                     -----------
+ref count      : 1
+.LinkStatusBMA  : listened by port : 13, 
+.ActualMac      : listened by port : 17, 
+----------------- MCUFirmware:C                 -----------
+ref count      : 1
+----------------- HostPowerOffInfo              -----------
+ref count      : 1
+----------------- BmcStartACMntr                -----------
+ref count      : 1
+.State          : listened by port : 13, 
+----------------- op1_present_exp-122           -----------
+ref count      : 1
+.Value          : listened by port : 13, 
+----------------- PcieCardPlugInInfo            -----------
+ref count      : 1
+----------------- ComRiserCard-9                -----------
+ref count      : 1
+.Health         : listened by port : 13, 
+----------------- Stdby1_1VLowInfo              -----------
+ref count      : 1
+----------------- Port0-122                     -----------
+ref count      : 1
+.LinkStatusBMA  : listened by port : 13, 
+.ActualMac      : listened by port : 17, 
+----------------- CpuVsaHighInfo                -----------
+ref count      : 1
+----------------- BoardPowerDropInfo            -----------
+ref count      : 1
+----------------- ComVPDConnect1-c              -----------
+ref count      : 1
+.Present        : listened by port : 13, 
+----------------- PCHVIOLowerInfo               -----------
+ref count      : 1
+----------------- op1_present_exp-123           -----------
+ref count      : 1
+.Value          : listened by port : 13, 
+----------------- PryLSDiffLRPresInfo           -----------
+ref count      : 1
+----------------- RiserTempMinorInfo            -----------
+ref count      : 1
+----------------- Port0-123                     -----------
+ref count      : 1
+.LinkStatusBMA  : listened by port : 13, 
+.ActualMac      : listened by port : 17, 
+----------------- BaseCPULowInfo                -----------
+ref count      : 1
+----------------- lom1_port0_link_mon-121       -----------
+ref count      : 1
+.MonSenValue    : listened by port : 13, 
+----------------- RaidCardPCIEErrInfo           -----------
+ref count      : 1
+----------------- op1_present_exp-124           -----------
+ref count      : 1
+.Value          : listened by port : 13, 
+----------------- LDAPCert4_10                  -----------
+ref count      : 1
+----------------- KvmLink:C                     -----------
+ref count      : 1
+----------------- Port0-124                     -----------
+ref count      : 1
+.LinkStatusBMA  : listened by port : 13, 
+.ActualMac      : listened by port : 17, 
+----------------- HddbdPowerFailedInfo          -----------
+ref count      : 1
+----------------- Mem2NoisyThermalPolicy        -----------
+ref count      : 1
+----------------- ExpCpldSelfcheckInfo          -----------
+ref count      : 1
+----------------- MezzCardReplaceInfo           -----------
+ref count      : 1
+----------------- lom1_port0_link_mon-122       -----------
+ref count      : 1
+.MonSenValue    : listened by port : 13, 
+----------------- Fan3HealLed                   -----------
+ref count      : 1
+----------------- LDAPCert3_1                   -----------
+ref count      : 1
+----------------- CpuFailIsoInfo                -----------
+ref count      : 1
+----------------- PolicyOMTemp-3                -----------
+ref count      : 1
+----------------- BackupUbootVer                -----------
+ref count      : 1
+----------------- lom1_port0_link_mon-123       -----------
+ref count      : 1
+.MonSenValue    : listened by port : 13, 
+----------------- LDAPCert3_2                   -----------
+ref count      : 1
+----------------- PCIeInitAbnormalInfo          -----------
+ref count      : 1
+----------------- BBUOverVoltageMajorInfo       -----------
+ref count      : 1
+----------------- ComHdd6-c                     -----------
+ref count      : 1
+.Health         : listened by port : 13, 
+----------------- Fan1RStatusThermal            -----------
+ref count      : 1
+----------------- CpldSelfcheckInfo             -----------
+ref count      : 1
+----------------- lom1_port0_link_mon-124       -----------
+ref count      : 1
+.MonSenValue    : listened by port : 13, 
+----------------- ComHddConnect4-c              -----------
+ref count      : 1
+.Present        : listened by port : 13, 
+----------------- LDAPCert3_3                   -----------
+ref count      : 1
+----------------- EPMI2CDeviceFaultyInfo        -----------
+ref count      : 1
+----------------- BMC:C                         -----------
+ref count      : 1
+----------------- Sys12VGetFailMaintInfo        -----------
+ref count      : 1
+----------------- BBUFireModuleTrigInfo         -----------
+ref count      : 1
+----------------- LDAPCert3_4                   -----------
+ref count      : 1
+----------------- NPUPFAEMntr-10b               -----------
+ref count      : 1
+.State          : listened by port : 13, 
+----------------- Port1LinkDownMntr             -----------
+ref count      : 1
+.State          : listened by port : 13, 
+----------------- HddIODeteriorationInfo        -----------
+ref count      : 1
+----------------- RS485Out12VHighInfo           -----------
+ref count      : 1
+----------------- PCIeVoltageLowerInfo          -----------
+ref count      : 1
+----------------- PcieStatus                    -----------
+ref count      : 1
+.Health         : listened by port : 6, 13, 
+----------------- LDAPCert3_5                   -----------
+ref count      : 1
+----------------- lom2_port1_link_mon-121       -----------
+ref count      : 1
+.MonSenValue    : listened by port : 13, 
+----------------- SysHealLed                    -----------
+ref count      : 1
+----------------- link_status_2-3               -----------
+ref count      : 1
+.Health         : listened by port : 6, 13, 
+----------------- NPUPFAEMntr-10c               -----------
+ref count      : 1
+.State          : listened by port : 13, 
+----------------- SoCBoardGetMiHeFailInfo       -----------
+ref count      : 1
+----------------- LDAPCert3_6                   -----------
+ref count      : 1
+----------------- lom2_port1_link_mon-122       -----------
+ref count      : 1
+.MonSenValue    : listened by port : 13, 
+----------------- Mem4NoisyThermalPolicy        -----------
+ref count      : 1
+----------------- Memory070                     -----------
+ref count      : 1
+.Presence       : listened by port : 13, 
+.FDMFault       : listened by port : 13, 
+.ReplaceFlag    : listened by port : 13, 
+----------------- PCIeCardGetInfoFailInfo       -----------
+ref count      : 1
+----------------- HddFailedArrayInfo            -----------
+ref count      : 1
+----------------- BMAForwardFailInfo            -----------
+ref count      : 1
+----------------- CpuDDRVPP_ABHighInfo          -----------
+ref count      : 1
+----------------- LDAPCert3_7                   -----------
+ref count      : 1
+----------------- lom2_port1_link_mon-123       -----------
+ref count      : 1
+.MonSenValue    : listened by port : 13, 
+----------------- MeInfo:C                      -----------
+ref count      : 1
+----------------- RaidBoardIDFailInfo           -----------
+ref count      : 1
+----------------- Mem350InstalledMntr           -----------
+ref count      : 1
+.State          : listened by port : 13, 
+----------------- Cpu3CoreRem                   -----------
+ref count      : 1
+.Health         : listened by port : 6, 13, 
+----------------- BladeRequestPSUInfo           -----------
+ref count      : 1
+----------------- LDAPCert3_8                   -----------
+ref count      : 1
+----------------- lom2_port1_link_mon-124       -----------
+ref count      : 1
+.MonSenValue    : listened by port : 13, 
+----------------- Cpu4VddqTempThermal           -----------
+ref count      : 1
+----------------- FIO3V3HighInfo                -----------
+ref count      : 1
+----------------- ArmNosisyInletPolicy          -----------
+ref count      : 1
+----------------- Port2LinkDownMntr-121         -----------
+ref count      : 1
+.State          : listened by port : 13, 
+----------------- SoCBoardInspectFailInfo       -----------
+ref count      : 1
+----------------- LDAPCert3_9                   -----------
+ref count      : 1
+----------------- Fan4RStatusThermal            -----------
+ref count      : 1
+----------------- PcieNicCard1                  -----------
+ref count      : 1
+----------------- PowerOffInfo                  -----------
+ref count      : 1
+----------------- OMTempHighMajorInfo           -----------
+ref count      : 1
+----------------- LicenseAlarmInfo:C            -----------
+ref count      : 1
+----------------- HMMVersionLowInfo             -----------
+ref count      : 1
+----------------- Port2LinkDownMntr-122         -----------
+ref count      : 1
+.State          : listened by port : 13, 
+----------------- BladeInstallInfo              -----------
+ref count      : 1
+----------------- LDAPGroup0                    -----------
+ref count      : 1
+----------------- GpuBrdMosVolAbnormalInfo      -----------
+ref count      : 1
+----------------- FabHeartAbnorInfo             -----------
+ref count      : 1
+----------------- localbus1                     -----------
+ref count      : 1
+----------------- PCIeGetMiniFailInfo           -----------
+ref count      : 1
+----------------- Port2LinkDownMntr-123         -----------
+ref count      : 1
+.State          : listened by port : 13, 
+----------------- UnitSNDupplicatedInfo         -----------
+ref count      : 1
+----------------- LDAPGroup1                    -----------
+ref count      : 1
+----------------- PcieNicCard3                  -----------
+ref count      : 1
+----------------- BasePSFaultInfo               -----------
+ref count      : 1
+----------------- Port2LinkDownMntr-124         -----------
+ref count      : 1
+.State          : listened by port : 13, 
+----------------- Stdby12VHighInfo              -----------
+ref count      : 1
+----------------- DBoardConnect                 -----------
+ref count      : 1
+.Present        : listened by port : 13, 
+----------------- MotherBoard                   -----------
+ref count      : 1
+----------------- Sys1_8VLowInfo                -----------
+ref count      : 1
+----------------- IncorrectPSUCountInfo         -----------
+ref count      : 1
+----------------- SyslogConfig_0                -----------
+ref count      : 1
+----------------- NPUCustomAiCoreTherm-10a      -----------
