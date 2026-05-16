@@ -1,296 +1,832 @@
 # -*- coding: utf-8 -*-
 """
-一个通过 Redfish API 异步获取服务器硬件信息的 Python 脚本。
+通过 Redfish API 异步获取华为服务器硬件 SN 信息。
 
-功能特性:
-- 异步I/O: 使用 aiohttp 和 asyncio 并发执行网络请求，极大提升效率。
-- 配置分离: 从 'config.json' 文件读取服务器 IP 和凭据，保证代码整洁与安全。
-- 模块化设计: 每个硬件组件信息获取函数返回格式化数据，由主函数统一有序打印。
-- 命令行接口: 支持通过命令行参数指定目标 IP 和需要查询的硬件组件。
-- 适应性增强: 能够从标准路径和厂商特定路径（如存储控制器关联的板卡）获取设备信息。
-- 健壮的发现逻辑: 优先从最可靠的API路径获取信息，并提供后备路径以兼容不同服务器型号。
-- 分页处理: 自动处理 Redfish API 的分页响应，确保获取完整的集合数据。
+主要适配目标:
+- 华为 Atlas 800I A2 / A3
+- 华为 TaiShan 200 / 鲲鹏服务器
+- 其他 iBMC Redfish 风格相近的华为服务器
+
+功能:
+- 自动发现 Systems / Chassis / Storage / Drives / PCIeDevices
+- 自动处理 Redfish 集合分页
+- 自动提取标准字段和 Huawei OEM 字段里的 SN
+- 支持 CPU、NPU、内存、硬盘、PCIe 卡、RAID 卡
+- 支持命令行选择组件
+- 支持 config.json 读取账号密码
 """
+
+import argparse
 import asyncio
 import json
-import argparse
 import sys
+from typing import Any, Dict, List, Optional, Set, Tuple
+
 import aiohttp
-from typing import Dict, Any, List, Set, Optional
 
-# --- 配置和设置 ---
-CONFIG_FILE = 'config.json'  # 配置文件名
 
+CONFIG_FILE = "config.json"
+
+
+# ----------------------------
+# 工具函数
+# ----------------------------
+
+def safe_get(data: Dict[str, Any], path: List[str], default: Any = "N/A") -> Any:
+    """安全读取嵌套字段。"""
+    cur: Any = data
+    for key in path:
+        if not isinstance(cur, dict):
+            return default
+        cur = cur.get(key)
+        if cur is None:
+            return default
+    return cur
+
+
+def pick_first(*values: Any, default: str = "N/A") -> Any:
+    """返回第一个非空、非 N/A 的值。"""
+    for v in values:
+        if v not in (None, "", "N/A", "Unknown"):
+            return v
+    return default
+
+
+def extract_sn(data: Dict[str, Any]) -> str:
+    """
+    尽量从标准字段和华为 OEM 字段中提取序列号。
+
+    华为不同型号/固件可能出现:
+    - SerialNumber
+    - Oem.Huawei.SerialNumber
+    - Oem.Huawei.DeviceSerialNumber
+    - Oem.Huawei.PartNumber / BoardSerialNumber 等
+    """
+    candidates = [
+        data.get("SerialNumber"),
+        data.get("Serial"),
+        data.get("SN"),
+        safe_get(data, ["Oem", "Huawei", "SerialNumber"], None),
+        safe_get(data, ["Oem", "Huawei", "DeviceSerialNumber"], None),
+        safe_get(data, ["Oem", "Huawei", "BoardSerialNumber"], None),
+        safe_get(data, ["Oem", "Huawei", "CardSerialNumber"], None),
+        safe_get(data, ["Oem", "Huawei", "ProductSerialNumber"], None),
+    ]
+    return pick_first(*candidates)
+
+
+def extract_model(data: Dict[str, Any]) -> str:
+    """提取型号/产品名。"""
+    candidates = [
+        data.get("Model"),
+        data.get("ProductName"),
+        data.get("PartNumber"),
+        data.get("Description"),
+        safe_get(data, ["Oem", "Huawei", "Model"], None),
+        safe_get(data, ["Oem", "Huawei", "ProductName"], None),
+        safe_get(data, ["Oem", "Huawei", "PartNumber"], None),
+    ]
+    return pick_first(*candidates)
+
+
+def bytes_to_gib(value: Optional[int]) -> str:
+    if value is None:
+        return "N/A"
+    try:
+        return f"{round(value / (1024 ** 3))} GB"
+    except Exception:
+        return "N/A"
+
+
+def mib_to_gib(value: Optional[int]) -> str:
+    if value is None:
+        return "N/A"
+    try:
+        return f"{round(value / 1024)} GB"
+    except Exception:
+        return "N/A"
+
+
+def normalize_path(path: str) -> str:
+    """Redfish 路径统一处理。"""
+    if not path:
+        return path
+    if path.startswith("http://") or path.startswith("https://"):
+        # 后面由 client.get 处理完整 URL
+        return path
+    if not path.startswith("/"):
+        return "/" + path
+    return path
+
+
+# ----------------------------
+# Redfish Client
+# ----------------------------
 
 class RedfishClient:
-    """为特定目标管理异步 Redfish API 请求的客户端。"""
+    """异步 Redfish 客户端。"""
 
-    def __init__(self, target_ip: str, auth: aiohttp.BasicAuth, session: aiohttp.ClientSession):
+    def __init__(
+        self,
+        target_ip: str,
+        auth: aiohttp.BasicAuth,
+        session: aiohttp.ClientSession,
+        debug: bool = False,
+    ):
         self.target_ip = target_ip
         self._auth = auth
         self._session = session
-        self.BASE_URL = f"https://{self.target_ip}"
+        self.base_url = f"https://{self.target_ip}"
+        self.debug = debug
+        self._cache: Dict[str, Optional[Dict[str, Any]]] = {}
 
     async def get(self, path: str) -> Optional[Dict[str, Any]]:
-        """对给定的 Redfish 路径执行异步 GET 请求。"""
-        url = f"{self.BASE_URL}{path}"
+        """GET Redfish JSON。带简单缓存，避免重复请求。"""
+        path = normalize_path(path)
+
+        if path.startswith("http://") or path.startswith("https://"):
+            url = path
+            cache_key = path
+        else:
+            url = f"{self.base_url}{path}"
+            cache_key = path
+
+        if cache_key in self._cache:
+            return self._cache[cache_key]
+
         try:
-            async with self._session.get(url, auth=self._auth, ssl=False, timeout=30) as response:
+            async with self._session.get(
+                url,
+                auth=self._auth,
+                ssl=False,
+                timeout=aiohttp.ClientTimeout(total=30),
+            ) as response:
+                if response.status == 404:
+                    self._cache[cache_key] = None
+                    return None
+
+                if response.status == 401:
+                    print(
+                        f"错误: {self.target_ip} 认证失败 401，请检查用户名/密码。",
+                        file=sys.stderr,
+                    )
+                    self._cache[cache_key] = None
+                    return None
+
                 response.raise_for_status()
-                return await response.json()
+                data = await response.json(content_type=None)
+                self._cache[cache_key] = data
+                return data
+
         except aiohttp.ClientConnectorError:
-            print(f"错误: 无法连接到 {self.target_ip}。请检查 IP 地址和网络连接。", file=sys.stderr)
-        except aiohttp.ClientResponseError as e:
-            if e.status == 401:
-                print(f"错误: 认证失败 (401 Unauthorized)。请检查 'config.json' 中的用户名和密码是否正确。",
-                      file=sys.stderr)
-            else:
-                # 对于404等错误，静默处理，让调用者判断返回的None
-                pass
+            print(f"错误: 无法连接到 {self.target_ip}，请检查网络/IP。", file=sys.stderr)
         except asyncio.TimeoutError:
-            print(f"错误: 请求超时，URL: {url}", file=sys.stderr)
+            print(f"错误: 请求超时: {url}", file=sys.stderr)
+        except aiohttp.ClientResponseError as e:
+            if self.debug:
+                print(f"调试: 请求失败 {url}, HTTP {e.status}", file=sys.stderr)
         except json.JSONDecodeError:
-            print(f"错误: 解析 JSON 响应失败，URL: {url}", file=sys.stderr)
+            print(f"错误: JSON 解析失败: {url}", file=sys.stderr)
         except Exception as e:
-            print(f"错误: 发生未知错误，URL: {url}。错误详情: {e}", file=sys.stderr)
+            print(f"错误: 请求异常 {url}: {e}", file=sys.stderr)
+
+        self._cache[cache_key] = None
         return None
 
+    async def get_collection_members(self, collection_path: str) -> List[str]:
+        """
+        读取 Redfish 集合成员，自动处理 Members@odata.nextLink。
+        返回成员 @odata.id 列表。
+        """
+        members: List[str] = []
+        next_link: Optional[str] = normalize_path(collection_path)
 
-# --- 数据获取与格式化函数 ---
+        while next_link:
+            data = await self.get(next_link)
+            if not data:
+                break
 
-def format_drive_details(drive_data: Dict[str, Any]) -> str:
-    """将单个硬盘的JSON数据格式化为一行字符串。"""
-    name = drive_data.get('Name', 'N/A')
-    model = drive_data.get('Model', 'N/A')
-    capacity_bytes = drive_data.get('CapacityBytes')
-    size_gb = f"{round(capacity_bytes / (1024 ** 3))} GB" if capacity_bytes is not None else "N/A"
-    sn = drive_data.get('SerialNumber', 'N/A')
-    media_type = drive_data.get('MediaType', 'N/A')
-    return f"  - [{name}] 型号: {model}, 容量: {size_gb}, 类型: {media_type}, SN: {sn}"
+            for member in data.get("Members", []):
+                if isinstance(member, dict) and member.get("@odata.id"):
+                    members.append(member["@odata.id"])
 
+            next_link = data.get("Members@odata.nextLink")
+
+        # 去重并保持顺序
+        seen: Set[str] = set()
+        result: List[str] = []
+        for p in members:
+            if p not in seen:
+                seen.add(p)
+                result.append(p)
+        return result
+
+    async def discover_systems(self) -> List[str]:
+        paths = await self.get_collection_members("/redfish/v1/Systems")
+        if not paths:
+            # 兜底兼容老脚本路径
+            for p in ["/redfish/v1/Systems/1", "/redfish/v1/Systems/1/"]:
+                if await self.get(p):
+                    paths.append(p)
+                    break
+        return paths
+
+    async def discover_chassis(self) -> List[str]:
+        paths = await self.get_collection_members("/redfish/v1/Chassis")
+        if not paths:
+            for p in ["/redfish/v1/Chassis/1", "/redfish/v1/Chassis/1/"]:
+                if await self.get(p):
+                    paths.append(p)
+                    break
+        return paths
+
+    async def discover_managers(self) -> List[str]:
+        return await self.get_collection_members("/redfish/v1/Managers")
+
+
+# ----------------------------
+# 信息采集函数
+# ----------------------------
 
 async def get_system_info(client: RedfishClient) -> List[str]:
-    """获取基本的系统信息并格式化为字符串列表。"""
     output = ["\n--- [系统信息] ---"]
-    data = await client.get('/redfish/v1/Systems/1/')
-    if data:
+
+    systems = await client.discover_systems()
+    if not systems:
+        output.append("  无法发现 Systems 资源。")
+        return output
+
+    for system_path in systems:
+        data = await client.get(system_path)
+        if not data:
+            continue
+
+        output.append(f"  资源路径: {system_path}")
+        output.append(f"  名称: {data.get('Name', 'N/A')}")
         output.append(f"  制造商: {data.get('Manufacturer', 'N/A')}")
         output.append(f"  型号: {data.get('Model', 'N/A')}")
-        output.append(f"  序列号 (SN): {data.get('SerialNumber', 'N/A')}")
+        output.append(f"  系统 SN: {extract_sn(data)}")
         output.append(f"  BIOS 版本: {data.get('BiosVersion', 'N/A')}")
-        power_state = data.get('PowerState', 'N/A')
-        health_status = data.get('Status', {}).get('Health', 'N/A')
-        output.append(f"  电源状态: {power_state}")
-        output.append(f"  健康状态: {health_status}")
-    else:
-        output.append("  无法获取系统信息。")
+        output.append(f"  电源状态: {data.get('PowerState', 'N/A')}")
+        output.append(f"  健康状态: {safe_get(data, ['Status', 'Health'])}")
+
     return output
 
 
-async def get_cpu_info(client: RedfishClient) -> List[str]:
-    """获取 CPU 和 NPU 信息并格式化为字符串列表。"""
-    output = ["\n--- [处理器信息 (CPU & NPU)] ---"]
-    processors_list = await client.get('/redfish/v1/Systems/1/Processors/')
-    if not processors_list or 'Members' not in processors_list:
-        output.append("  无法获取处理器列表。")
+async def get_cpu_npu_info(client: RedfishClient) -> List[str]:
+    output = ["\n--- [处理器信息: CPU / NPU / Accelerator] ---"]
+
+    systems = await client.discover_systems()
+    if not systems:
+        output.append("  无法发现 Systems 资源。")
         return output
 
-    cpu_paths = [m['@odata.id'] for m in processors_list['Members'] if
-                 m.get('@odata.id') and 'Npu' not in m['@odata.id']]
-    npu_count = sum(1 for m in processors_list['Members'] if m.get('@odata.id') and 'Npu' in m['@odata.id'])
+    cpu_count = 0
+    npu_count = 0
+    other_count = 0
 
-    output.append(f"  物理 CPU 数量: {len(cpu_paths)}")
-    # 修正NPU数量计算逻辑，如果需要的话可以调整
-    # 例如：output.append(f"  NPU 数量: {npu_count // 2 if npu_count > 0 else 0}")
-    output.append(f"  NPU 数量: {npu_count}")
+    for system_path in systems:
+        system_data = await client.get(system_path)
+        if not system_data:
+            continue
 
-    cpu_tasks = [client.get(path) for path in cpu_paths]
-    results = await asyncio.gather(*cpu_tasks)
+        processors_link = safe_get(system_data, ["Processors", "@odata.id"], None)
+        if not processors_link:
+            # 兜底拼接
+            processors_link = system_path.rstrip("/") + "/Processors"
 
-    for cpu_data in results:
-        if cpu_data:
-            name = cpu_data.get('Name', 'N/A')
-            model = cpu_data.get('Model', 'N/A')
-            sn = cpu_data.get('Oem', {}).get('Huawei', {}).get('SerialNumber', 'N/A')
-            output.append(f"  - [{name}] 型号: {model}, SN: {sn}")
+        processor_paths = await client.get_collection_members(processors_link)
+        if not processor_paths:
+            output.append(f"  {system_path}: 无法获取处理器列表。")
+            continue
+
+        tasks = [client.get(p) for p in processor_paths]
+        results = await asyncio.gather(*tasks)
+
+        for path, proc in zip(processor_paths, results):
+            if not proc:
+                continue
+
+            name = proc.get("Name", "N/A")
+            model = extract_model(proc)
+            sn = extract_sn(proc)
+            ptype = proc.get("ProcessorType", "")
+            lower_text = f"{name} {model} {ptype} {path}".lower()
+
+            if "npu" in lower_text or "accelerator" in lower_text or "ascend" in lower_text:
+                npu_count += 1
+                dev_type = "NPU/加速器"
+            elif "cpu" in lower_text or ptype.lower() == "cpu":
+                cpu_count += 1
+                dev_type = "CPU"
+            else:
+                other_count += 1
+                dev_type = "处理器/未知"
+
+            output.append(
+                f"  - [{dev_type}] 路径: {path}, 名称: {name}, 型号: {model}, SN: {sn}"
+            )
+
+    output.insert(1, f"  CPU 数量: {cpu_count}")
+    output.insert(2, f"  NPU/加速器数量: {npu_count}")
+    if other_count:
+        output.insert(3, f"  其他处理器资源数量: {other_count}")
+
     return output
 
 
 async def get_memory_info(client: RedfishClient) -> List[str]:
-    """获取内存信息并格式化为字符串列表，自动处理分页。"""
     output = ["\n--- [内存信息] ---"]
-    all_members = []
-    # 初始请求路径
-    next_link = '/redfish/v1/Systems/1/Memory/'
-    total_count = "N/A"
 
-    # 循环处理分页，直到没有 nextLink 为止
-    while next_link:
-        page_data = await client.get(next_link)
-        if not page_data:
-            # 如果请求失败，则跳出循环
-            break
+    systems = await client.discover_systems()
+    if not systems:
+        output.append("  无法发现 Systems 资源。")
+        return output
 
-        # 从第一页响应中获取总数
-        if total_count == "N/A":
-            total_count = page_data.get('Members@odata.count', 0)
+    mem_paths: List[str] = []
 
-        # 将当前页的成员添加到总列表中
-        if 'Members' in page_data:
-            all_members.extend(page_data['Members'])
+    for system_path in systems:
+        system_data = await client.get(system_path)
+        if not system_data:
+            continue
 
-        # 获取下一页的链接，如果没有则为 None，循环将终止
-        next_link = page_data.get('Members@odata.nextLink')
+        memory_link = safe_get(system_data, ["Memory", "@odata.id"], None)
+        if not memory_link:
+            memory_link = system_path.rstrip("/") + "/Memory"
 
-    if not all_members:
+        mem_paths.extend(await client.get_collection_members(memory_link))
+
+    # 去重
+    mem_paths = sorted(set(mem_paths))
+
+    if not mem_paths:
         output.append("  无法获取内存列表。")
         return output
 
-    output.append(f"  内存条数量: {total_count}")
+    output.append(f"  内存条数量: {len(mem_paths)}")
 
-    # 使用收集到的所有成员路径并发获取详细信息
-    mem_tasks = [client.get(member['@odata.id']) for member in all_members if '@odata.id' in member]
-    results = await asyncio.gather(*mem_tasks)
+    tasks = [client.get(p) for p in mem_paths]
+    results = await asyncio.gather(*tasks)
 
-    for mem_data in results:
-        if mem_data:
-            name = mem_data.get('Name', 'N/A')
-            size_mib = mem_data.get('CapacityMiB')
-            size_gb = f"{round(size_mib / 1024)} GB" if size_mib is not None else "N/A"
-            sn = mem_data.get('SerialNumber', 'N/A')
-            output.append(f"  - [{name}] 容量: {size_gb}, SN: {sn}")
+    for path, mem in zip(mem_paths, results):
+        if not mem:
+            continue
+
+        name = mem.get("Name", "N/A")
+        size_gb = mib_to_gib(mem.get("CapacityMiB"))
+        sn = extract_sn(mem)
+        manufacturer = mem.get("Manufacturer", "N/A")
+        part_number = mem.get("PartNumber", "N/A")
+        speed = pick_first(mem.get("OperatingSpeedMhz"), mem.get("AllowedSpeedsMHz"), default="N/A")
+
+        output.append(
+            f"  - 路径: {path}, 名称: {name}, 容量: {size_gb}, "
+            f"厂商: {manufacturer}, PN: {part_number}, 频率: {speed}, SN: {sn}"
+        )
 
     return output
+
+
+async def discover_drive_paths(client: RedfishClient) -> List[str]:
+    """
+    发现硬盘路径。
+
+    策略:
+    1. Chassis/*/Drives
+    2. Systems/*/Storage 或 Storages
+    3. StorageControllers 中关联的 Drives
+    """
+    drive_paths: Set[str] = set()
+
+    # 策略 1: 从 Chassis Drives 获取物理盘
+    chassis_paths = await client.discover_chassis()
+    for chassis_path in chassis_paths:
+        chassis = await client.get(chassis_path)
+        if not chassis:
+            continue
+
+        drives_link = safe_get(chassis, ["Drives", "@odata.id"], None)
+        candidate_links = []
+
+        if drives_link:
+            candidate_links.append(drives_link)
+
+        # 兜底路径
+        candidate_links.extend([
+            chassis_path.rstrip("/") + "/Drives",
+            chassis_path.rstrip("/") + "/Drives/",
+        ])
+
+        for link in candidate_links:
+            members = await client.get_collection_members(link)
+            for p in members:
+                drive_paths.add(p)
+
+    # 策略 2: 从 Systems Storage/Storages 获取
+    systems = await client.discover_systems()
+    storage_paths: Set[str] = set()
+
+    for system_path in systems:
+        system_data = await client.get(system_path)
+        if not system_data:
+            continue
+
+        for key in ("Storage", "Storages"):
+            storage_link = safe_get(system_data, [key, "@odata.id"], None)
+            if storage_link:
+                for p in await client.get_collection_members(storage_link):
+                    storage_paths.add(p)
+
+        # 兜底兼容你的旧路径和常见新路径
+        for storage_collection in [
+            system_path.rstrip("/") + "/Storage",
+            system_path.rstrip("/") + "/Storages",
+        ]:
+            for p in await client.get_collection_members(storage_collection):
+                storage_paths.add(p)
+
+    if storage_paths:
+        storage_tasks = [client.get(p) for p in sorted(storage_paths)]
+        storage_results = await asyncio.gather(*storage_tasks)
+
+        for storage in storage_results:
+            if not storage:
+                continue
+
+            # 标准 Drives
+            for drive_member in storage.get("Drives", []):
+                if isinstance(drive_member, dict) and drive_member.get("@odata.id"):
+                    drive_paths.add(drive_member["@odata.id"])
+
+            # 某些实现可能有 Drives.@odata.id
+            drives_link = safe_get(storage, ["Drives", "@odata.id"], None)
+            if drives_link:
+                for p in await client.get_collection_members(drives_link):
+                    drive_paths.add(p)
+
+    return sorted(drive_paths)
 
 
 async def get_drive_info(client: RedfishClient) -> List[str]:
-    """获取硬盘信息，优先使用Chassis路径，失败则回退到Storage路径。"""
     output = ["\n--- [硬盘信息] ---"]
-    drive_path_set: Set[str] = set()
 
-    # --- 策略 1: 首选路径，从Chassis获取完整的物理硬盘列表 ---
-    drive_list_from_chassis = await client.get('/redfish/v1/Chassis/1/Drives/')
-    if drive_list_from_chassis and 'Members' in drive_list_from_chassis and drive_list_from_chassis['Members']:
-        for member in drive_list_from_chassis['Members']:
-            if '@odata.id' in member:
-                drive_path_set.add(member['@odata.id'])
+    drive_paths = await discover_drive_paths(client)
 
-    # --- 策略 2: 后备路径，如果首选路径失败，则从Storage控制器获取 ---
-    if not drive_path_set:
-        storage_list = await client.get('/redfish/v1/Systems/1/Storages/')
-        if storage_list and 'Members' in storage_list:
-            storage_tasks = [client.get(member['@odata.id']) for member in storage_list['Members']]
-            storage_results = await asyncio.gather(*storage_tasks)
-            for storage_data in storage_results:
-                if storage_data and 'Drives' in storage_data:
-                    for drive_member in storage_data['Drives']:
-                        if isinstance(drive_member, dict) and '@odata.id' in drive_member:
-                            drive_path_set.add(drive_member['@odata.id'])
-
-    if not drive_path_set:
+    if not drive_paths:
         output.append("  无法获取硬盘列表。")
         return output
 
-    drive_paths = sorted(list(drive_path_set))
     output.append(f"  硬盘数量: {len(drive_paths)}")
 
-    drive_tasks = [client.get(path) for path in drive_paths]
-    results = await asyncio.gather(*drive_tasks)
+    tasks = [client.get(p) for p in drive_paths]
+    results = await asyncio.gather(*tasks)
 
-    for drive_data in results:
-        if drive_data:
-            output.append(format_drive_details(drive_data))
+    for path, drive in zip(drive_paths, results):
+        if not drive:
+            continue
+
+        name = drive.get("Name", "N/A")
+        model = extract_model(drive)
+        capacity = bytes_to_gib(drive.get("CapacityBytes"))
+        media_type = drive.get("MediaType", "N/A")
+        protocol = pick_first(drive.get("Protocol"), drive.get("InterfaceType"), default="N/A")
+        sn = extract_sn(drive)
+
+        output.append(
+            f"  - 路径: {path}, 名称: {name}, 型号: {model}, "
+            f"容量: {capacity}, 类型: {media_type}, 协议: {protocol}, SN: {sn}"
+        )
 
     return output
+
+
+async def discover_pcie_paths(client: RedfishClient) -> List[str]:
+    """
+    发现 PCIe / RAID / 加速卡路径。
+
+    策略:
+    1. Systems/* 里的 PCIeDevices
+    2. Chassis/*/PCIeDevices
+    3. StorageControllers.Oem.Huawei.AssociatedCard
+    """
+    paths: Set[str] = set()
+
+    systems = await client.discover_systems()
+    for system_path in systems:
+        system_data = await client.get(system_path)
+        if not system_data:
+            continue
+
+        # 标准字段可能是数组
+        for member in system_data.get("PCIeDevices", []):
+            if isinstance(member, dict) and member.get("@odata.id"):
+                paths.add(member["@odata.id"])
+
+        # 也可能是链接
+        pcie_link = safe_get(system_data, ["PCIeDevices", "@odata.id"], None)
+        if pcie_link:
+            for p in await client.get_collection_members(pcie_link):
+                paths.add(p)
+
+        # 兜底
+        for link in [
+            system_path.rstrip("/") + "/PCIeDevices",
+            system_path.rstrip("/") + "/PCIeDevices/",
+        ]:
+            for p in await client.get_collection_members(link):
+                paths.add(p)
+
+    chassis_paths = await client.discover_chassis()
+    for chassis_path in chassis_paths:
+        chassis = await client.get(chassis_path)
+        if not chassis:
+            continue
+
+        pcie_link = safe_get(chassis, ["PCIeDevices", "@odata.id"], None)
+        if pcie_link:
+            for p in await client.get_collection_members(pcie_link):
+                paths.add(p)
+
+        for link in [
+            chassis_path.rstrip("/") + "/PCIeDevices",
+            chassis_path.rstrip("/") + "/PCIeDevices/",
+        ]:
+            for p in await client.get_collection_members(link):
+                paths.add(p)
+
+    # 从 StorageControllers 里找 RAID 卡关联路径
+    storage_paths: Set[str] = set()
+    for system_path in systems:
+        for storage_collection in [
+            system_path.rstrip("/") + "/Storage",
+            system_path.rstrip("/") + "/Storages",
+        ]:
+            for p in await client.get_collection_members(storage_collection):
+                storage_paths.add(p)
+
+    if storage_paths:
+        storage_tasks = [client.get(p) for p in sorted(storage_paths)]
+        storage_results = await asyncio.gather(*storage_tasks)
+
+        for storage in storage_results:
+            if not storage:
+                continue
+
+            for controller in storage.get("StorageControllers", []):
+                if not isinstance(controller, dict):
+                    continue
+
+                card_path = safe_get(
+                    controller,
+                    ["Oem", "Huawei", "AssociatedCard", "@odata.id"],
+                    None,
+                )
+                if card_path:
+                    paths.add(card_path)
+
+    return sorted(paths)
 
 
 async def get_pcie_info(client: RedfishClient) -> List[str]:
-    """获取PCIe和RAID卡信息，合并标准路径和厂商特定路径的结果。"""
-    output = ["\n--- [PCIe 及板卡信息] ---"]
-    device_path_set: Set[str] = set()
-    unique_devices: Dict[str, Dict[str, Any]] = {}
+    output = ["\n--- [PCIe / RAID / 加速卡信息] ---"]
 
-    # 1. 从标准PCIeDevices路径获取
-    system_data = await client.get('/redfish/v1/Systems/1/')
-    if system_data and 'PCIeDevices' in system_data and system_data['PCIeDevices']:
-        for member in system_data['PCIeDevices']:
-            if '@odata.id' in member:
-                device_path_set.add(member['@odata.id'])
+    pcie_paths = await discover_pcie_paths(client)
 
-    # 2. 从Storage控制器关联的板卡路径获取 (用于发现RAID卡等)
-    storage_list = await client.get('/redfish/v1/Systems/1/Storages/')
-    if storage_list and 'Members' in storage_list:
-        storage_tasks = [client.get(m['@odata.id']) for m in storage_list['Members']]
-        storage_results = await asyncio.gather(*storage_tasks)
-        for storage_data in storage_results:
-            if storage_data and 'StorageControllers' in storage_data:
-                for controller in storage_data['StorageControllers']:
-                    card_path = controller.get('Oem', {}).get('Huawei', {}).get('AssociatedCard', {}).get('@odata.id')
-                    if card_path:
-                        device_path_set.add(card_path)
-
-    if not device_path_set:
-        output.append("  未找到任何 PCIe 或板卡设备。")
+    if not pcie_paths:
+        output.append("  未发现 PCIe / RAID / 加速卡资源。")
         return output
 
-    output.append(f"  PCIe 及板卡数量: {len(device_path_set)}")
+    output.append(f"  PCIe / RAID / 加速卡数量: {len(pcie_paths)}")
 
-    device_tasks = [client.get(path) for path in sorted(list(device_path_set))]
-    results = await asyncio.gather(*device_tasks)
+    tasks = [client.get(p) for p in pcie_paths]
+    results = await asyncio.gather(*tasks)
 
-    for device_data in results:
-        if device_data:
-            name = device_data.get('Name', 'N/A')
-            # 优先使用ProductName，其次是Description
-            desc = device_data.get('ProductName', device_data.get('Description', 'N/A'))
-            sn = device_data.get('SerialNumber', 'N/A')
-            device_type = "RAID卡" if "RAID" in name or "RAID" in desc else "PCIe卡"
-            output.append(f"  - [{name}] 类型: {device_type}, 描述: {desc}, SN: {sn}")
+    seen_identity: Set[Tuple[str, str, str]] = set()
+
+    for path, dev in zip(pcie_paths, results):
+        if not dev:
+            continue
+
+        name = dev.get("Name", "N/A")
+        model = extract_model(dev)
+        sn = extract_sn(dev)
+        manufacturer = dev.get("Manufacturer", "N/A")
+        desc = pick_first(dev.get("Description"), dev.get("ProductName"), default="N/A")
+
+        text = f"{name} {model} {desc}".lower()
+        if "raid" in text or "sas" in text or "storage" in text:
+            dev_type = "RAID/存储卡"
+        elif "ascend" in text or "npu" in text or "accelerator" in text:
+            dev_type = "NPU/加速卡"
+        elif "nic" in text or "ethernet" in text or "network" in text or "mellanox" in text:
+            dev_type = "网卡"
+        elif "gpu" in text:
+            dev_type = "GPU"
+        else:
+            dev_type = "PCIe卡"
+
+        identity = (name, model, sn)
+        if identity in seen_identity:
+            continue
+        seen_identity.add(identity)
+
+        output.append(
+            f"  - [{dev_type}] 路径: {path}, 名称: {name}, 型号/描述: {model}, "
+            f"厂商: {manufacturer}, SN: {sn}"
+        )
 
     return output
 
 
-# --- 主要执行逻辑 ---
+async def get_bmc_info(client: RedfishClient) -> List[str]:
+    output = ["\n--- [BMC / 管理控制器信息] ---"]
 
-def load_config() -> Optional[Dict[str, Any]]:
-    """从 config.json 文件加载服务器配置。"""
+    managers = await client.discover_managers()
+    if not managers:
+        output.append("  无法发现 Managers 资源。")
+        return output
+
+    for path in managers:
+        data = await client.get(path)
+        if not data:
+            continue
+
+        output.append(f"  资源路径: {path}")
+        output.append(f"  名称: {data.get('Name', 'N/A')}")
+        output.append(f"  型号: {data.get('Model', 'N/A')}")
+        output.append(f"  BMC SN: {extract_sn(data)}")
+        output.append(f"  固件版本: {data.get('FirmwareVersion', 'N/A')}")
+        output.append(f"  UUID: {data.get('UUID', 'N/A')}")
+
+    return output
+
+
+async def get_all_sn_summary(client: RedfishClient) -> List[str]:
+    """
+    简洁汇总模式：适合只关心 SN 的场景。
+    """
+    output = ["\n--- [SN 汇总] ---"]
+
+    sections = [
+        await get_system_info(client),
+        await get_cpu_npu_info(client),
+        await get_memory_info(client),
+        await get_drive_info(client),
+        await get_pcie_info(client),
+        await get_bmc_info(client),
+    ]
+
+    # 这里不再二次解析字符串，直接输出完整信息更可靠
+    for section in sections:
+        output.extend(section)
+
+    return output
+
+
+# ----------------------------
+# 配置读取
+# ----------------------------
+
+def load_config() -> Dict[str, Any]:
     try:
-        with open(CONFIG_FILE, 'r', encoding='utf-8') as f:
+        with open(CONFIG_FILE, "r", encoding="utf-8") as f:
             return json.load(f)
     except FileNotFoundError:
-        print(f"错误: 配置文件 '{CONFIG_FILE}' 未找到。请根据说明创建该文件。", file=sys.stderr)
+        return {}
     except json.JSONDecodeError:
-        print(f"错误: 配置文件 '{CONFIG_FILE}' 格式错误，不是有效的 JSON。", file=sys.stderr)
-    return None
+        print(f"错误: {CONFIG_FILE} 不是有效 JSON。", file=sys.stderr)
+        return {}
 
 
-async def main():
-    """主函数，用于解析命令行参数并协调数据获取流程。"""
-    parser = argparse.ArgumentParser(
-        description="通过 Redfish API 异步获取指定 IP 的服务器硬件信息。",
-        formatter_class=argparse.RawTextHelpFormatter
-    )
-    parser.add_argument("target_ip", help="要查询的 BMC 的 IP 地址。")
-    parser.add_argument(
-        "--components", nargs='+', choices=['system', 'cpu', 'memory', 'drive', 'pcie'],
-        help="指定要获取的硬件信息组件 (可多选)。\n默认为全部获取。"
-    )
-    args = parser.parse_args()
+def get_credentials(config: Dict[str, Any], target_ip: str) -> Tuple[str, str]:
+    """
+    支持几种 config.json 格式。
 
-    component_map = {
-        'system': get_system_info, 'cpu': get_cpu_info, 'memory': get_memory_info,
-        'drive': get_drive_info, 'pcie': get_pcie_info,
+    格式 1:
+    {
+      "username": "Administrator",
+      "password": "xxxx"
     }
 
-    # 确定要运行的组件
-    components_to_run = args.components if args.components else list(component_map.keys())
+    格式 2:
+    {
+      "default": {
+        "username": "Administrator",
+        "password": "xxxx"
+      }
+    }
+
+    格式 3:
+    {
+      "servers": {
+        "192.168.1.10": {
+          "username": "Administrator",
+          "password": "xxxx"
+        }
+      }
+    }
+    """
+    if "servers" in config and target_ip in config["servers"]:
+        item = config["servers"][target_ip]
+        return item.get("username", ""), item.get("password", "")
+
+    if "default" in config:
+        item = config["default"]
+        return item.get("username", ""), item.get("password", "")
+
+    return config.get("username", ""), config.get("password", "")
+
+
+# ----------------------------
+# 主流程
+# ----------------------------
+
+async def main() -> None:
+    parser = argparse.ArgumentParser(
+        description="通过 Redfish API 获取华为服务器硬件 SN 信息。",
+        formatter_class=argparse.RawTextHelpFormatter,
+    )
+    parser.add_argument("target_ip", help="BMC / iBMC IP 地址")
+    parser.add_argument(
+        "--components",
+        nargs="+",
+        choices=["system", "cpu", "npu", "memory", "drive", "pcie", "bmc", "all"],
+        default=["all"],
+        help=(
+            "指定要获取的组件，可多选。\n"
+            "可选: system cpu npu memory drive pcie bmc all\n"
+            "默认: all"
+        ),
+    )
+    parser.add_argument("--username", "-u", help="iBMC 用户名，优先级高于 config.json")
+    parser.add_argument("--password", "-p", help="iBMC 密码，优先级高于 config.json")
+    parser.add_argument("--debug", action="store_true", help="打印调试信息")
+    args = parser.parse_args()
 
     config = load_config()
+    username, password = get_credentials(config, args.target_ip)
 
-    print("\n信息获取完成。")
+    if args.username:
+        username = args.username
+    if args.password:
+        password = args.password
+
+    if not username or not password:
+        print(
+            "错误: 未提供用户名或密码。请使用 --username/--password，或创建 config.json。",
+            file=sys.stderr,
+        )
+        sys.exit(1)
+
+    auth = aiohttp.BasicAuth(username, password)
+
+    connector = aiohttp.TCPConnector(ssl=False, limit=20)
+
+    async with aiohttp.ClientSession(connector=connector) as session:
+        client = RedfishClient(
+            target_ip=args.target_ip,
+            auth=auth,
+            session=session,
+            debug=args.debug,
+        )
+
+        components = set(args.components)
+        if "all" in components:
+            components = {"system", "cpu", "npu", "memory", "drive", "pcie", "bmc"}
+
+        tasks = []
+
+        if "system" in components:
+            tasks.append(get_system_info(client))
+
+        # cpu 和 npu 共用一个 Redfish Processors 集合
+        if "cpu" in components or "npu" in components:
+            tasks.append(get_cpu_npu_info(client))
+
+        if "memory" in components:
+            tasks.append(get_memory_info(client))
+
+        if "drive" in components:
+            tasks.append(get_drive_info(client))
+
+        if "pcie" in components:
+            tasks.append(get_pcie_info(client))
+
+        if "bmc" in components:
+            tasks.append(get_bmc_info(client))
+
+        results = await asyncio.gather(*tasks)
+
+        print(f"\n========== {args.target_ip} 硬件 SN 信息 ==========")
+        for section in results:
+            for line in section:
+                print(line)
+
+        print("\n信息获取完成。")
 
 
 if __name__ == "__main__":
     if sys.platform == "win32":
         asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
+
     asyncio.run(main())
